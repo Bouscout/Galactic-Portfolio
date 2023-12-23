@@ -1,0 +1,29 @@
+---
+import { AstreSpatial } from "./astre_spatial"
+import { CriptedTitle } from "./astre_title"
+import { ExploreButton } from "./exploreButton"
+import "./astre.scss"
+import type { only } from "node:test"
+
+import jupiter from "../../assets/jupiter.webp"
+const NebulaSaturne = "../../assets/saturne_green_nebula.png"
+const NeonPlanet = "../../assets/neon_planet.png"
+const bigCityPlanet = "../../assets/big_city.png"
+const JapanPlanet = "../../assets/japan_planet.png"
+const introPlanet = "../../assets/intro.png"
+---
+
+
+
+
+
+<AstreSpatial x={0} y={0} image={jupiter} client:only>
+    <CriptedTitle title={"Ceci est un test"}  client:load/>
+    <ExploreButton />
+</AstreSpatial>
+
+<!-- <AstreSpatial 
+x={0} y={0} assetLink={jupiter}
+client:load
+/> -->
+<!-- <CriptedTitle title={"Ceci est un test"} client:load/> -->

@@ -1,0 +1,30 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "strict": true,
+    "target": "ES6",
+    "lib": ["DOM"],
+
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      },
+    ],
+  
+  },
+
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+
+    "fallbackPolling": "dynamicpriority",
+
+    "synchronousWatchDirectory": true,
+
+    "excludeDirectories": ["**/node_modules", "_build", "dist"],
+  }
+
+  
+}

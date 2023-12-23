@@ -1,0 +1,39 @@
+@import "../../pages/colors";
+
+.astre {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // translate: -50% -50%;
+    z-index: 3;
+    width: 777px;
+    // height: 896px;
+    aspect-ratio: 1.2857;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;   
+    
+    // will-change: transform;
+    // overflow: hidden;
+    background: $iris;
+    border: 3px solid $iris;
+
+    div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}   
+
+
+.crypted-title {
+    font-family: monospace;
+    text-wrap: nowrap;
+    aspect-ratio : 1 / 1;
+    text-align: center;
+    color: map-get($map: $blue-planet, $key: text);
+    font-size: 4vmax;
+}

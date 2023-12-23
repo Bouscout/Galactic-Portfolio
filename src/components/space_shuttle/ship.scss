@@ -1,0 +1,55 @@
+
+#space-ship{
+    position: absolute;
+    z-index: 10;
+    width: 10px;
+    translate: -50% -50%;
+    top: 0;
+    left: 0;
+    aspect-ratio: 1 / 2;
+
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 80px solid #3498db;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    // background: url("../../../assets/spaceship.png");
+    background: white;
+    scale: 0.60;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.smoke {
+    position: absolute;
+    translate: -50% -50%;
+    top: 0;
+    left: 0;
+    
+    z-index: 9;
+    width: 20px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+
+    background: radial-gradient(#ff0000, #ff5a00, #ff9a00, #131313,#ffce00, #ffe808, #131313);
+    filter: blur(10px);
+    overflow: hidden;
+}
+
+#test {
+    position: fixed;
+    z-index: 5;
+    inset: 0px;
+    // border: solid red;
+    background:url("../../../assets/green_nebula.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    scale: 1.1;
+    background-position: center;
+    opacity: 0.2;
+    filter: brightness(50%);
+}
+
+@keyframes fade {
+    from {opacity: 1;}
+    to {opacity: 0};
+}

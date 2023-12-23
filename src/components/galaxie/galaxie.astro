@@ -1,0 +1,165 @@
+---
+import {AllStars} from "./stars"
+---
+
+<style lang="scss">
+    main {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border: solid red;
+     
+        canvas {
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            border: solid red;
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: transparent;
+        }
+    }
+</style>
+
+<>
+
+<main>
+    <AllStars numStars={100} client:only/>
+</main>
+
+<!-- <canvas id="canvas"/> -->
+
+
+<!-- 
+<script>
+    import { useStore } from "@nanostores/react";
+    import {velocityX, velocityY, flying} from "../state_management"
+    // declare the num of stars per layer
+    const layers = [
+        10, 30, 60
+    ]
+   
+    // declare speed of each layer
+    const gen_speed = 0.02
+    
+    const themeColor: object = {
+    purple_haze : "hsl(275,82.8%, ",
+    green_nebula : "hsl(167.2,95.9%, ",
+    blue_planet : "hsl(197.1,33.1%, "
+    }
+
+
+    const AllStars: Array<Array<Array<any>>> = []
+    
+    // canvas set up
+    const width = window.innerWidth
+    const height = window.innerHeight
+
+    const canvas: HTMLCanvasElement | null = document.getElementById("canvas") as HTMLCanvasElement
+    const pencil = canvas.getContext("2d")
+
+    if (pencil){
+        pencil.canvas.width = width
+        pencil.canvas.height = height
+    }
+
+    // creating star arrays
+    function createStarSheet(numStars:number) : Array<any> {
+    
+    let randomX, randomY, radius, color
+    const sheetStars = Array(numStars).fill(0)
+
+    for (let index = 0; index < numStars; index++) {
+        // star coordinate
+        randomX = Math.round(Math.random() * width)
+        randomY = Math.round(Math.random() * height)
+        radius = Math.random()
+        
+        
+        color = Object.values(themeColor)[Math.floor(Math.random() * 3)]
+
+        color = `${color} ${Math.trunc((Math.round(radius * 100)))}%)`
+        // color = `hsl(266,76%, ${Math.trunc((Math.round(radius * 100)))}%)`
+
+        sheetStars[index] = [randomX, randomY, radius, color]
+    }
+    return sheetStars
+}
+
+    // move and draw each star in a list of star
+    function update(listStars:Array<Array<any>>) : void{
+        if (!pencil){return} // exit if no pencil
+
+        for (let index = 0; index < listStars.length; index++) {
+            let [x, y, radius, color] = listStars[index]
+        
+            // drawing star
+            pencil.beginPath();
+            pencil.arc(x, y, radius * 2, 0, 2 * Math.PI);
+            pencil.fillStyle = color;
+            pencil.fill();
+            
+            x  -= localVelocityX * radius
+            y -= localVelocityY * radius
+            
+            // handling out of bound
+            x = x - radius > width ? -radius : x
+            x = x + radius < 0 ? width + radius : x
+            
+            y = y - radius > height ? -radius : y
+            y = y + radius < 0 ? height + radius : y
+            
+            // move the star
+            listStars[index][0] = x
+            listStars[index][1] = y
+        }
+    }
+
+    // get mouse position to determine direction of animation
+    let localVelocityX = 0
+    let localVelocityY = 1
+
+    document.onmousemove = (e) => {
+        const {clientX, clientY} = e
+        localVelocityX = (clientX - (width / 2)) * gen_speed
+        localVelocityY = (clientY - (height / 2)) * gen_speed
+    }
+
+    
+
+    // animation
+    let isFlying = true
+    function animate() :void{
+        if (!pencil){return}
+
+        isFlying = useStore(flying)
+        if (!isFlying){return}
+     
+      pencil.fillStyle = '#010510';
+      pencil.fillRect(0, 0, width, height);
+    
+      // drawing stars
+      AllStars.map((stars, i) => {
+        update(stars)
+      })
+      
+      velocityX.set(localVelocityX)
+      velocityY.set(localVelocityY)
+      requestAnimationFrame(animate);
+    }
+
+    // create the star arrays
+    for (let index = 0; index < layers.length; index++) {
+        const num = layers[index];
+        
+        AllStars.push(createStarSheet(num))
+    }
+
+    // animate
+    animate()
+
+</script> -->
+
+</>
