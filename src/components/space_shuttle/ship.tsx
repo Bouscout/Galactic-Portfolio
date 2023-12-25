@@ -1,6 +1,6 @@
 // mouse cursor space ship
 
-import { useState, type FC, useRef } from "react";
+import { useState, type FC } from "react";
 import { flying } from "../state_management";
 import { useStore } from "@nanostores/react";
 
@@ -10,9 +10,10 @@ export const Ship: FC = () => {
     const [angle, setAngle] = useState(180)
     const [posX, setPosX] = useState(0)
     const [posY, setPosY] = useState(0)
+
     const isFlying = useStore(flying)
 
-
+    
     function createTrail(): void {
         let newTrail = trail.slice()
         const length = newTrail.unshift([posX, posY])
@@ -27,13 +28,12 @@ export const Ship: FC = () => {
         const deltaX = lastX - posX;
         const deltaY = lastY - posY;
 
+        // find the angle in rad then convert it
         const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-        setAngle(angle + 90)
+        setAngle(angle + 90) // add offset
     }
 
-    function calculateDistance(x1: number, y1: number, x2: number, y2: number): number {
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-      }
+   
 
       window.onmousemove = (e : MouseEvent) => {
             if (isFlying){
@@ -52,7 +52,8 @@ export const Ship: FC = () => {
 
     return (
         <>
-        <div id="space-ship" style={{
+        <div
+        id="space-ship" style={{
             left : `${posX}px`, top : `${posY}px`,
             transform : `rotate(${angle}deg)`,
         }}></div>
@@ -61,8 +62,6 @@ export const Ship: FC = () => {
             const [x, y] = elem
             return <Smoke x={x} y={y} key={i} index={i}/>
         })}
-
-        {/* <div id="test"></div> */}
         </>
     )
 } 

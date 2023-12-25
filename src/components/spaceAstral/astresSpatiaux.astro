@@ -1,29 +1,30 @@
 ---
-import { AstreSpatial } from "./astre_spatial"
-import { CriptedTitle } from "./astre_title"
-import { ExploreButton } from "./exploreButton"
 import "./astre.scss"
-import type { only } from "node:test"
+import { AstreSpatial } from "./astre_spatial"
+import { BuushidoProject } from "./informationCards/buushido_streaming"
+import { RecommendationSystem} from "./informationCards/recommender_system"
 
 import jupiter from "../../assets/jupiter.webp"
-const NebulaSaturne = "../../assets/saturne_green_nebula.png"
-const NeonPlanet = "../../assets/neon_planet.png"
-const bigCityPlanet = "../../assets/big_city.png"
-const JapanPlanet = "../../assets/japan_planet.png"
-const introPlanet = "../../assets/intro.png"
+import NebulaSaturne from "../../assets/saturne_green_nebula.webp"
+import NeonPlanet from "../../assets/neon_planet.webp"
+import bigCityPlanet from "../../assets/big_city.webp"
+import JapanPlanet from "../../assets/japan_planet.webp"
+import introPlanet from "../../assets/intro.webp"
 ---
 
 
 
 
 
-<AstreSpatial x={0} y={0} image={jupiter} client:only>
-    <CriptedTitle title={"Ceci est un test"}  client:load/>
-    <ExploreButton />
+<AstreSpatial x={0} y={0} title="More About me" image={jupiter} client:only>
+    <BuushidoProject />
 </AstreSpatial>
 
-<!-- <AstreSpatial 
-x={0} y={0} assetLink={jupiter}
-client:load
-/> -->
-<!-- <CriptedTitle title={"Ceci est un test"} client:load/> -->
+
+<AstreSpatial x={2000} y={0} title="Buushido Streaming" image={JapanPlanet} client:only>
+    <BuushidoProject />
+</AstreSpatial> 
+
+<AstreSpatial x={-2000} y={0} title="Recommender System" image={NeonPlanet} client:only>
+    <RecommendationSystem />
+</AstreSpatial>

@@ -10,7 +10,7 @@ export const AllStars :FC<Props> = ({numStars}) => {
     const [AllStars, setAllStars] = useState<Array<Array<any>>>([])
 
     // declare speed of each layer
-    const gen_speed = 0.02
+    const speed = 0.02
     
     const themeColor: object = {
     purple_haze : "hsl(275,82.8%, ",
@@ -70,8 +70,12 @@ export const AllStars :FC<Props> = ({numStars}) => {
 
     document.onmousemove = (e : MouseEvent) => {
         const {clientX, clientY} = e
-        localVelocityX = (clientX - (width / 2)) * gen_speed
-        localVelocityY = (clientY - (height / 2)) * gen_speed
+        localVelocityX = (clientX - (width / 2)) * speed
+        localVelocityY = (clientY - (height / 2)) * speed
+
+        velocityX.set(localVelocityX)
+        velocityY.set(localVelocityY)
+       
     }
 
     
@@ -79,7 +83,10 @@ export const AllStars :FC<Props> = ({numStars}) => {
     // animation
     function animate() :void{
         if (!pencil){return}
-        if (!flying.get()){return}
+        if (!flying.get()){
+            requestAnimationFrame(animate);
+            return
+        }
         
         pencil.fillStyle = '#010510';
         pencil.fillRect(0, 0, width, height);
@@ -87,8 +94,6 @@ export const AllStars :FC<Props> = ({numStars}) => {
         // drawing stars
         update(AllStars)
         
-        velocityX.set(localVelocityX)
-        velocityY.set(localVelocityY)
         requestAnimationFrame(animate);
     }
 
@@ -114,8 +119,9 @@ export const AllStars :FC<Props> = ({numStars}) => {
             }
             return sheetStars
         }
-
-        setAllStars(createStarSheet(numStars))
+        const stars = createStarSheet(numStars)
+        update(stars)
+        setAllStars(stars)
     }, [])
 
     
