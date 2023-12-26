@@ -1,6 +1,7 @@
 // recommender system project information
 
-import { ProjectCardLayout } from "./layout/infos"
+import { RegularCard } from "./layout/regularCard"
+import { PicWithButtons } from "./layout/picture"
 
 import NeonPlanet from "../../../assets/neon_planet.webp"
 import type { FC } from "react"
@@ -17,13 +18,21 @@ export const RecommendationSystem :FC = () => {
     
 
     return (
-        <ProjectCardLayout
-        image={NeonPlanet}
-        url={link}
-        gitUrl={githubLink}
-        >
+        <section id="project-container">
+
+        <RegularCard>
+            
+            <PicWithButtons 
+            image={NeonPlanet}
+            url={link}
+            gitUrl={githubLink}
+            />
+        
             <Description />
-        </ProjectCardLayout>
+
+        </RegularCard>
+        
+        </section>
     )
 }
 

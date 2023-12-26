@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { velocityX, velocityY, flying } from "../state_management";
+import { velocityX, velocityY, flying, Positions } from "../state_management";
 import { useState, type FC, useEffect, type ReactNode, Children } from "react";
 
 import { ExploreButton, ExitButton } from "./navButton"
@@ -7,6 +7,7 @@ import { CriptedTitle } from "./astre_title"
 
 
 interface Props {
+    id : number,
     x : number,
     y : number,
     title : string,
@@ -15,7 +16,7 @@ interface Props {
 }
 
 
-export const AstreSpatial: FC<Props> = ({x, y, image, title, children}) => { 
+export const AstreSpatial: FC<Props> = ({id, x, y, image, title, children}) => { 
     const renderDistance = 2000 // distance at which we render
     const detailsRenderDistance = 500
 
@@ -49,13 +50,20 @@ export const AstreSpatial: FC<Props> = ({x, y, image, title, children}) => {
         if (flying.get()){
             setPosX((prevPosX) => prevPosX - velX);
             setPosY((prevPosY) => prevPosY - velY);
+
+            // change position
+            
         }
         
     }, 50);
-
+    
+    // update position coordinate
+    Positions.get()[id][0] = posX 
+    Positions.get()[id][1] = posY 
+    
     if (Math.abs(posX) > renderDistance){return}
     if (Math.abs(posY) > renderDistance){return}
-
+    
     let renderDetails = true
     if (Math.abs(posX) > detailsRenderDistance || Math.abs(posY) > detailsRenderDistance){
         renderDetails = false

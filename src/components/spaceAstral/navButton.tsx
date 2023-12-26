@@ -11,5 +11,12 @@ export const ExploreButton :FC<Props> = ({func}) => {
 }
 
 export const ExitButton :FC<Props> = ({func}) => {
-    return <a onClick={()=>{func(false)}}></a>
+    return (
+        <div className="exit-button">
+            <button onClick={()=>{func(false)}}>
+                <i className="fa-solid fa-arrow-left-long"></i>
+            </button>
+            <h4>Exit</h4>
+        </div>
+        )
 }

@@ -1,4 +1,6 @@
 
+@import "./colors" ;
+
 @property --button-angle {
     syntax: "<angle>";
     initial-value: 0deg;
@@ -47,8 +49,40 @@
     }
 
 }
-
 @keyframes spin {
     from {--button-angle: 0deg;}
     to {--button-angle: 360deg;}
 }
+
+@mixin color-swap-button {
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        animation: color-swap 8s linear 0s both;
+    }
+}
+
+
+
+@keyframes color-swap {
+    0%, 100% {
+        background-color: map-get($map: $blue-planet, $key: secondary);
+        box-shadow: 0 0 40px -8px map-get($map: $blue-planet, $key: accent);
+    }
+    25% {
+        background-color: map-get($map: $purple-haze, $key: accent);
+        box-shadow: 0 0 40px -8px map-get($map: $purple-haze, $key: accent);
+
+    }
+    50% {
+      background-color: map-get($map: $green-nebula, $key: accent);
+      box-shadow: 0 0 40px -8px map-get($map: $green-nebula, $key: accent);
+    }
+    75% {
+      background-color: map-get($map: $blue-planet, $key: background);
+      box-shadow: 0 0 40px -8px map-get($map: $blue-planet, $key: accent);
+    }
+  }

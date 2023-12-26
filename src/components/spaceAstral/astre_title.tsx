@@ -11,7 +11,8 @@ export const CriptedTitle : FC<Props> = ({title}) => {
     const [text, setText] = useState("")
 
     const getRandomCharacter = () => {
-        const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*_+<>?';
+        const characters = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
+
         const randomIndex = Math.floor(Math.random() * characters.length);
         return characters.charAt(randomIndex);
       };    

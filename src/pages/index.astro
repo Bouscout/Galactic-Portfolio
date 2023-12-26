@@ -4,20 +4,21 @@ import Blob from '../components/cursor/blob.astro';
 import Galaxie from '../components/galaxie/galaxie.astro';
 import SpaceShip from "../components/space_shuttle/spaceShip.astro"
 import AstreSpatiaux from "../components/spaceAstral/astresSpatiaux.astro"
+import { Compass } from "../components/compass/compass"
 
 import { BuushidoProject } from '../components/spaceAstral/informationCards/buushido_streaming';
 ---
 
 <Layout title="Welcome to Astro.">
-
 	<!-- <Blob /> -->
+
 	<Galaxie />
 	<SpaceShip />
+	<AstreSpatiaux /> 
 
-	<AstreSpatiaux />
-	<!-- <Galaxie />
-	<BuushidoProject /> -->
+	<!-- <BuushidoProject /> -->
 
+	<Compass client:load />
 </Layout>
 
 <
