@@ -6,6 +6,7 @@ dist/
 
 # pictures
 assets/
+raw_assets/
 
 # dependencies
 node_modules/
