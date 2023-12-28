@@ -1,5 +1,10 @@
 ---
 import { WormHolePage } from "./worm_hole_page";
+import { BuushidoStreaming, ReinforcementLearning, DeepLNumpy, DiscordBot, UnityMl, RecommenderInfos } from "./projects";
 ---
 
-<WormHolePage client:only />
+<WormHolePage
+Projects={[
+    BuushidoStreaming, ReinforcementLearning, DeepLNumpy, DiscordBot, UnityMl, RecommenderInfos
+]} 
+client:load />

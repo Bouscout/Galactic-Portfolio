@@ -2,20 +2,15 @@
 
 import { useState, type FC, useEffect } from "react";
 import { TiltingInfos } from "./titlting_infos";
+import { CriptedTitle } from "../spaceAstral/astre_title"
 
 import "./worm_hole.scss"
 
-import akira from "../../../assets/panoramas/akira.webp"
-import japan from "../../../assets/panoramas/japan2.webp"
-import rl from "../../../assets/panoramas/rl_3.webp"
-import discord from "../../../assets/panoramas/discord_planet.webp"
+interface Props{
+    Projects : Array<any>
+}
 
-import placeHolder from "../../../assets/panoramas/blue_nebula.webp"
-
-
-export const WormHolePage :FC = () => {
-    const cases = [akira, japan, rl, discord]
-    
+export const WormHolePage :FC<Props> = ({ Projects }) => {    
     const [margins, setMargins] = useState<Array<number[]>>([])
     const [sizes, setSizes] = useState<Array<number[]>>([])
 
@@ -34,7 +29,7 @@ export const WormHolePage :FC = () => {
         
         const new_margins = []
         const new_sizes = []
-        for (let index = 0; index < cases.length; index++) {
+        for (let index = 0; index < Projects.length; index++) {
 
             new_margins.push([
                 generateRandom(marginTopLimit), generateRandom(marginLeftLimit)
@@ -66,21 +61,24 @@ export const WormHolePage :FC = () => {
 
     return (
         <div id="worm-hole" onScroll={(evt)=>updateScroll(evt)}>
-            <div className="window">
-            {/* <div> */}
-                {cases.map((project, i) => {
 
-                    return <Window key={i} image={project} margin={margins[i]} scroll={scroll} size={sizes[i]}/>
+            <HeadMessage />
+
+            <div className="window">
+                
+                {Projects.map((project, i) => {
+                    const [title, description, image] = project
+                    return <Window key={i} titre={title} description={description} image={image} margin={margins[i]} scroll={scroll} size={sizes[i]}/>
                 })}
-                {cases.map((project, i) => {
-                    return <Window key={i} image={project} margin={margins[i]} scroll={scroll} size={sizes[i]}/>
-                })}
+
             </div>
         </div>
     )
 }
 
 interface windowProps {
+    titre : string,
+    description : string,
     image : ImageMetadata,
     margin : number[],
     size : number[],
@@ -88,7 +86,7 @@ interface windowProps {
 
 }
 
-const Window:FC<windowProps> = ({ image, margin, size, scroll}) => {
+const Window:FC<windowProps> = ({titre, description, image, margin, size, scroll}) => {
     const [width, height] = size
     const [top, left] = margin
 
@@ -106,11 +104,20 @@ const Window:FC<windowProps> = ({ image, margin, size, scroll}) => {
         <article>
             <div style={inStyle} />
 
-            <TiltingInfos>
-                <h2>Demon Ware</h2>
-                <h3>Serveur De call of duty gaming</h3>
-                </TiltingInfos>
+            <TiltingInfos image={image}>
+                <h2>{titre}</h2>
+                <h3>{description}</h3>
+            </TiltingInfos>
 
         </article>
+    )
+}
+
+
+const HeadMessage:FC = () => {
+    return (
+        <header>
+            <CriptedTitle title="Jump into the wormholes to get directly to your destination 🚀." header={true} duration={3000}/>
+        </header>
     )
 }

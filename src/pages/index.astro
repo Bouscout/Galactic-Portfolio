@@ -8,6 +8,7 @@ import Layout from '../layouts/Layout.astro';
 
 // import { BuushidoProject } from '../components/spaceAstral/informationCards/buushido_streaming';
 import WormHole from '../components/worm_hole/wormHole.astro';
+import { MessageWindow } from "../components/message_window/message_window"
 ---
 
 <Layout title="Cheick's Portfolio">
@@ -18,8 +19,11 @@ import WormHole from '../components/worm_hole/wormHole.astro';
 	<AstreSpatiaux /> 
 	<Compass client:load /> -->
 
-	<WormHole />
-
+	<!-- <WormHole /> -->
+	<MessageWindow msg='Utilisez votre radar pour vous diriger et explorer les planetes presentes dans cette galaxie.' 
+	duration={7000}
+	delay={1000} 
+	client:load/>
 </Layout>
 
 <

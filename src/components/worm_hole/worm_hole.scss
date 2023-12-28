@@ -1,8 +1,20 @@
 #worm-hole {
     position: absolute;
     inset: 0;
-    z-index: 10;background-color: #0a0716;
+    z-index: 10;
+    // background-color: #0a0716;
+    background-color: #010d15;
     overflow-y: scroll;
+
+    h1 {
+      margin-top: 5vmax;
+      color: #fff;
+      font-size: 1.2em;
+      font-family: monospace;
+      text-align: center;
+      height: 25vh;
+      overflow-x: hidden;
+    }
     
     .window {
         display: grid;

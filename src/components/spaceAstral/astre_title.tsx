@@ -2,12 +2,13 @@
 import {type FC, useState, useEffect} from "react"
 
 interface Props{
-    title : string
+    title : string,
+    header? :boolean,
+    duration? : number, // in ms
 }
 
-export const CriptedTitle : FC<Props> = ({title}) => {
+export const CriptedTitle : FC<Props> = ({title, header=false, duration=1500}) => {
     const size = title.length
-    const duration = 1500 // in ms
     const [text, setText] = useState("")
 
     const getRandomCharacter = () => {
@@ -54,7 +55,11 @@ export const CriptedTitle : FC<Props> = ({title}) => {
   
     return (
         <>
+        {header ?
+        <h1 className="crypted-title">{text}</h1> :
+
         <h2 className="crypted-title">{text}</h2>
+        }
         </>
     )
 }
