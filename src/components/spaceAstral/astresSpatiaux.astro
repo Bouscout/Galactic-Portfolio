@@ -3,18 +3,24 @@ import "./astre.scss"
 import { AstreSpatial } from "./astre_spatial"
 import { BuushidoProject } from "./informationCards/buushido_streaming"
 import { RecommendationSystem} from "./informationCards/recommender_system"
+import { Compass } from "../compass/compass"
 
-import jupiter from "../../assets/jupiter.webp"
-import NebulaSaturne from "../../assets/saturne_green_nebula.webp"
-import NeonPlanet from "../../assets/neon_planet.webp"
-import bigCityPlanet from "../../assets/big_city.webp"
-import JapanPlanet from "../../assets/japan_planet.webp"
-import introPlanet from "../../assets/intro.webp"
+import Galaxie from "../galaxie/galaxie.astro"
+import SpaceShip from "../space_shuttle/spaceShip.astro"
+
+import jupiter from "../../../assets/planets/jupiter.webp"
+import NebulaSaturne from "../../../assets/planets/saturne_green_nebula.webp"
+import NeonPlanet from "../../../assets/planets/neon_planet.webp"
+import bigCityPlanet from "../../../assets/planets/big_city.webp"
+import introPlanet from "../../../assets/planets/intro.webp"
+import JapanPlanet from "../../../assets/planets/japan_planet.webp"
 ---
 
 
 
-
+<Compass client:load/>
+<Galaxie />
+<SpaceShip />
 
 <AstreSpatial id={1} x={0} y={0} title="More About me" image={jupiter} client:only>
     <BuushidoProject />

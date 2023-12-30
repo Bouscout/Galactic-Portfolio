@@ -5,7 +5,7 @@ dist/
 .astro/
 
 # pictures
-assets/
+# assets/
 raw_assets/
 
 # dependencies

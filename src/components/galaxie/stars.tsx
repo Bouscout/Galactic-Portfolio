@@ -20,14 +20,21 @@ export const AllStars :FC<Props> = ({numStars}) => {
     }
 
     // canvas set up
-    const width = window.innerWidth
-    const height = window.innerHeight
+    let width = window.innerWidth
+    let height = window.innerHeight
 
     const canvasRef = useRef<HTMLCanvasElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
     
     
     let pencil : CanvasRenderingContext2D | null 
-    if (canvasRef.current){
+    
+    if (canvasRef.current && containerRef.current){
+
+        width = containerRef.current.clientWidth 
+        height = containerRef.current.clientHeight
+
+
         pencil = canvasRef.current.getContext("2d")!
         pencil.canvas.width = width
         pencil.canvas.height = height
@@ -70,6 +77,7 @@ export const AllStars :FC<Props> = ({numStars}) => {
 
     document.onmousemove = (e : MouseEvent) => {
         const {clientX, clientY} = e
+        console.log(clientX, clientY)
         localVelocityX = (clientX - (width / 2)) * speed
         localVelocityY = (clientY - (height / 2)) * speed
 
@@ -128,5 +136,9 @@ export const AllStars :FC<Props> = ({numStars}) => {
     animate()
 
 
-    return <canvas width={100} height={100} ref={canvasRef}/>
+    return (
+        <div id="black-hole" ref={containerRef}>
+            <canvas width={100} height={100} ref={canvasRef}/>
+        </div>
+    ) 
 }

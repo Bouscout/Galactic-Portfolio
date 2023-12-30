@@ -13,3 +13,14 @@ const initPositions = {
 }
 
 export const Positions = atom<{[key : number] : number[]}>(initPositions) 
+
+type StateDict = {[key : string] : boolean}
+
+const windowState : StateDict = {
+    "information" : true,
+    "exploration" : false,
+    "accessibility" : false,
+}
+
+
+export const GeneralState = atom(windowState)

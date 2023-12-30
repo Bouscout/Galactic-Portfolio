@@ -1,29 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-// import Blob from '../components/cursor/blob.astro';
-// import Galaxie from '../components/galaxie/galaxie.astro';
-// import SpaceShip from "../components/space_shuttle/spaceShip.astro"
-// import AstreSpatiaux from "../components/spaceAstral/astresSpatiaux.astro"
-// import { Compass } from "../components/compass/compass"
+import Blob from '../components/cursor/blob.astro';
+import AstreSpatiaux from "../components/spaceAstral/astresSpatiaux.astro"
 
-// import { BuushidoProject } from '../components/spaceAstral/informationCards/buushido_streaming';
 import WormHole from '../components/worm_hole/wormHole.astro';
-import { MessageWindow } from "../components/message_window/message_window"
+import MyInfoState from "../components/my_info_state/myInfoState.astro"
+
+import { Universe } from "../components/universe"
+
 ---
 
 <Layout title="Cheick's Portfolio">
-	<!-- <Blob /> -->
 
-	<!-- <Galaxie />
-	<SpaceShip />
-	<AstreSpatiaux /> 
-	<Compass client:load /> -->
+	<Universe mode="exploration">
+		<AstreSpatiaux /> 
+	</Universe>
 
-	<!-- <WormHole /> -->
-	<MessageWindow msg='Utilisez votre radar pour vous diriger et explorer les planetes presentes dans cette galaxie.' 
-	duration={7000}
-	delay={1000} 
-	client:load/>
+	<Universe mode='accessibility'>
+		<WormHole />
+	</Universe>
+
+	<Universe mode='information'>	
+		<MyInfoState />
+	</Universe>
+
 </Layout>
-
-<
