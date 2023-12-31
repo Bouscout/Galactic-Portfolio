@@ -3,6 +3,7 @@
 import { useState, type FC, useEffect, type ReactNode } from "react";
 
 import { GeneralState } from "./state_management";
+import { useStore } from "@nanostores/react";
 
 interface Props {
     mode : string,
@@ -10,13 +11,16 @@ interface Props {
 }
 
 export const Universe:FC<Props> = ({mode, children}) => {
-    const [render, setRender] = useState(false)
+    const renderState = GeneralState.get()[mode]
+    const [render, setRender] = useState(renderState)
 
     useEffect(() => {
         const renderState = GeneralState.get()[mode]
         setRender(renderState)
-    }, [GeneralState.get()[mode]])
 
+    }, [useStore(GeneralState)[mode]])
+
+    console.log(mode, " : render is ", render)
     return (
         <>
         {render &&

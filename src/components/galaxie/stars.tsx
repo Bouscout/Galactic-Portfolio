@@ -1,6 +1,8 @@
 import { useState, type FC, useRef, useEffect } from "react"
 import { velocityX, velocityY, flying } from "../state_management"
 
+import "./stars.scss"
+
 interface Props {
     numStars : number
 }
@@ -77,7 +79,6 @@ export const AllStars :FC<Props> = ({numStars}) => {
 
     document.onmousemove = (e : MouseEvent) => {
         const {clientX, clientY} = e
-        console.log(clientX, clientY)
         localVelocityX = (clientX - (width / 2)) * speed
         localVelocityY = (clientY - (height / 2)) * speed
 

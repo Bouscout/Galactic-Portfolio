@@ -1,23 +1,14 @@
 // buushido streaming project information
 
 import { RegularCard } from "./layout/regularCard"
-import { TiltingCardLayout } from "./layout/titltingCard"
 import { PicWithButtons } from "./layout/picture"
 
-import JapanPlanet from "../../../assets/japan_planet.webp"
+import JapanPlanet from "../../../../assets/planets/japan_planet.webp"
 import type { FC } from "react"
 
 const shortDescription = `Welcome to Buushido, your ultimate destination for anime streaming. Immerse yourself in a thoughtfully curated collection, seamlessly blending timeless classics with the latest sensations. With user-friendly features enhancing every aspect, Buushido ensures you spend your time savoring only the finest anime experiences`
 const Title = "Buushido Anime Streaming"
 
-
-// <ProjectCardLayout
-// image={JapanPlanet}
-// url={link}
-// gitUrl={githubLink}
-// >
-//     <Description />
-// </ProjectCardLayout>
 
 export const BuushidoProject :FC = () => {
     const link = "https://buushido.com"

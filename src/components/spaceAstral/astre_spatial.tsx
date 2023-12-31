@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { velocityX, velocityY, flying, Positions } from "../state_management";
-import { useState, type FC, useEffect, type ReactNode, Children } from "react";
+import { useState, type FC, type ReactNode } from "react";
 
 import { ExploreButton, ExitButton } from "./navButton"
 import { CriptedTitle } from "./astre_title"
@@ -29,7 +29,6 @@ export const AstreSpatial: FC<Props> = ({id, x, y, image, title, children}) => {
     const setLanding = () => {
         // const state = useStore(flying)
         const state = flying.get()
-        console.log("landing : ", state)
         setLanded(!landed)
         flying.set(landed)
     }

@@ -1,8 +1,9 @@
 // worm hole component to jump to the planets project without needind to explore from space
 
 import { useState, type FC, useEffect } from "react";
-import { TiltingInfos } from "./titlting_infos";
 import { CriptedTitle } from "../spaceAstral/astre_title"
+
+import { WormWindow } from "./worm_window"
 
 import "./worm_hole.scss"
 
@@ -68,7 +69,11 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
                 
                 {Projects.map((project, i) => {
                     const [title, description, image] = project
-                    return <Window key={i} titre={title} description={description} image={image} margin={margins[i]} scroll={scroll} size={sizes[i]}/>
+                    return <WormWindow key={i} titre={title} description={description}
+                            image={image} margin={margins[i]}
+                            scroll={scroll} size={sizes[i]}
+                            index={i}
+                            />
                 })}
 
             </div>
@@ -76,48 +81,13 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
     )
 }
 
-interface windowProps {
-    titre : string,
-    description : string,
-    image : ImageMetadata,
-    margin : number[],
-    size : number[],
-    scroll : number,
-
-}
-
-const Window:FC<windowProps> = ({titre, description, image, margin, size, scroll}) => {
-    const [width, height] = size
-    const [top, left] = margin
-
-    const inStyle = {
-        width : `${width}%`,
-        height : `${height}%`,
-        marginTop : top+"%",
-        marginLeft : left+"%",
-        backgroundImage : `url("${image.src}")`,
-        backgroundPositionY : `${(1 - scroll)*100}%`,
-    
-    } as React.CSSProperties
-
-    return (
-        <article>
-            <div style={inStyle} />
-
-            <TiltingInfos image={image}>
-                <h2>{titre}</h2>
-                <h3>{description}</h3>
-            </TiltingInfos>
-
-        </article>
-    )
-}
 
 
 const HeadMessage:FC = () => {
     return (
         <header>
-            <CriptedTitle title="Jump into the wormholes to get directly to your destination 🚀." header={true} duration={3000}/>
+            {/* <CriptedTitle title="Jump into the wormholes to get directly to your destination 🚀." header={true} duration={3000}/> */}
+            <h1>Jump into the wormholes to get directly to your destination 🚀.</h1>
         </header>
     )
 }

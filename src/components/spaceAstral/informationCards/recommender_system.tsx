@@ -3,7 +3,7 @@
 import { RegularCard } from "./layout/regularCard"
 import { PicWithButtons } from "./layout/picture"
 
-import NeonPlanet from "../../../assets/neon_planet.webp"
+import NeonPlanet from "../../../../assets/planets/japan_planet.webp"
 import type { FC } from "react"
 
 

@@ -3,7 +3,6 @@
     z-index: 1;
     inset: 0;
     overflow: hidden;
-    border: solid red;
 }
 
 #singularity {
@@ -15,13 +14,14 @@
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: #d5d5d5;
+    width: 4px;
     filter: blur(3px);
     transition: all 200ms;
 }
 
 @keyframes singularity {
     from { 
-        width: 1px;
+        width: 4px;
         background-color: #d5d5d5;
     }
     to { 

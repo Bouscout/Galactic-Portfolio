@@ -3,19 +3,19 @@
 
 // display the message in an animation where the text is written slowly
 
-import { useState, type FC, useEffect } from "react";
+import { useState, type FC, useEffect, type ReactNode } from "react";
 
 import "./message_window.scss"
 
 interface Props {
     msg : string,
-    // cancel : Function,
-    duration : number, // ms
+    duration? : number, // ms
     delay ? : number, // ms
     speed ? : number,
+    children? : ReactNode
 }
 
-export const MessageWindow:FC<Props> = ({msg, duration, delay=0, speed=5}) => {
+export const MessageWindow:FC<Props> = ({msg, duration=null, delay=0, speed=5, children=null}) => {
     const writtingDelay = (msg.length / speed)
     const [index, setIndex] = useState(1)
     const [text, setText] = useState('')
@@ -36,16 +36,17 @@ export const MessageWindow:FC<Props> = ({msg, duration, delay=0, speed=5}) => {
 
     useEffect(() => {
         // handling the starting delay
-        console.log("delay is : ", delay)
         setTimeout(() => {
             setStarted(true)
         }, delay);
 
-        // handling the display duration
-        const total_duration = delay + (msg.length * writtingDelay) + duration 
-        setTimeout(() => {
-            setStarted(false)
-        }, total_duration);
+        // handling the display 
+        if (duration){
+            const total_duration = delay + (msg.length * writtingDelay) + duration 
+            setTimeout(() => {
+                setStarted(false)
+            }, total_duration);
+        }
 
     }, [])
 
@@ -60,7 +61,15 @@ export const MessageWindow:FC<Props> = ({msg, duration, delay=0, speed=5}) => {
                     {text}
                     </pre>
                 </h2>
-                <OkButton func={setStarted}/>
+
+                <div>
+                    {children ? 
+
+                         children :
+                        <OkButton func={setStarted}/>
+                        
+                    }
+                </div>
             </div>
         </section>
     )
