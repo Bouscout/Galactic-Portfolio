@@ -33,6 +33,11 @@ export const Ship: FC = () => {
         setAngle(angle + 90) // add offset
     }
 
+    // handle ship activation
+    window.onclick = (e: MouseEvent) => {
+        // Use e.target as HTMLElement to access the matches method
+        flying.set(!flying.get());
+      };
    
 
       window.onmousemove = (e : MouseEvent) => {

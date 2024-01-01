@@ -15,7 +15,9 @@
     aspect-ratio: 1.2857;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;   
+    background-position: center;  
+    
+    transition: transform 100ms linear;
     
     will-change: transform;
     overflow: hidden;

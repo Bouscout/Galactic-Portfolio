@@ -31,6 +31,9 @@ export const AstreSpatial: FC<Props> = ({id, x, y, image, title, children}) => {
         const state = flying.get()
         setLanded(!landed)
         flying.set(landed)
+        console.log("landed on ", title, posX, posY)
+        setPosX(0)
+        setPosY(0)
     }
 
     const triggerInfoPage = (state:boolean) => {
