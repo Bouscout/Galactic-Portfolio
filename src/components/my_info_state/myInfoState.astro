@@ -1,7 +1,14 @@
 ---
-import type { only } from "node:test";
+import { Navbar } from "../navbar/navbar";
 import { BlackHole } from "./black_hole"
 import { MessageWindow } from "../message_window/message_window";
+import { GeneralState } from "../state_management";
+
+const introMessage = `Hello I'm Cheick Diallo, I love building and designing "things" on my computer and also I love Space, so why not explore my work in a space odyssey fashion.
+
+Click the Hyper-Space button to embard on the journey or click the Worm-Hole button to jump directly to the destinations.
+`
+
 ---
 
 <style>
@@ -10,13 +17,14 @@ import { MessageWindow } from "../message_window/message_window";
     }
 </style>
 
-<BlackHole client:only />
+<Navbar logo={true} shortcuts={true} client:load />
 
-<MessageWindow msg='Hello I am Cheick, software engineer, here are some things that I have built.' 
-	delay={500} 
-	client:load
->
-    <button><h3>Explore</h3></button>
-    <button><h3>Jump to Wormholes</h3></button>
+<BlackHole client:only>
 
-</MessageWindow>
+    <!-- <MessageWindow msg={introMessage} 
+        delay={500}
+        speed={8} 
+        client:load
+    /> -->
+
+</BlackHole>

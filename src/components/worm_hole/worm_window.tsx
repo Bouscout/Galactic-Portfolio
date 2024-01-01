@@ -25,7 +25,7 @@ export const WormWindow:FC<windowProps> = ({titre, description, image, margin, s
     useEffect(() => {
         setTimeout(() => {
             setWidth(newWidth)
-        }, index * 1000);
+        }, 500 + index * 1000);
     }, [])
 
     const inStyle = {

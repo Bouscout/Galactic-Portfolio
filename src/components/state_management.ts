@@ -1,6 +1,8 @@
 
 import { atom } from "nanostores";
 
+export const first_time = atom(true) // first time user landing on the page
+
 export const velocityX = atom(0)
 export const velocityY = atom(0)
 

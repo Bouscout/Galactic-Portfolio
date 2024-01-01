@@ -56,21 +56,19 @@ export const MessageWindow:FC<Props> = ({msg, duration=null, delay=0, speed=5, c
     return (
         <section id="pop-up">
             <div>
-                <h2>
-                    <pre>
-                    {text}
-                    </pre>
-                </h2>
 
                 <div>
-                    {children ? 
+                    <h2>
+                        <pre>
+                        {text}
+                        </pre>
+                    </h2>
 
-                         children :
-                        <OkButton func={setStarted}/>
-                        
-                    }
                 </div>
+                
+                <ExitButton func={setStarted}/>
             </div>
+                            
         </section>
     )
 }
@@ -83,5 +81,16 @@ interface buttonProps {
 const OkButton:FC<buttonProps> = ({func}) => {
     return (
         <button onClick={()=>func(false)} role="button"><h3>Continue</h3></button>
+    )
+}
+
+export const ExitButton :FC<buttonProps> = ({ func }) => {
+    return (
+        <button id="exit-button">
+            <h2 onClick={()=>{func(false)}}>
+                <i className="fa-solid fa-xmark"></i>
+            </h2>
+            <h4>Close</h4>
+        </button>
     )
 }

@@ -1,10 +1,15 @@
 // black hole singularity animation
 
 import "./my_infos.scss"
-import { useState, useEffect, useRef , type FC } from "react";
+import { useState, useEffect, useRef , type FC, type ReactNode } from "react";
 
+import { HyperSpaceButton, WormHolesButton } from "./mainButtons";
 
-export const BlackHole:FC = () => {
+interface Props {
+    children? : ReactNode
+}
+
+export const BlackHole:FC<Props> = ({ children = null }) => {
     const [AllStars, setAllStars] = useState<Array<Array<any>>>([])
     const [starSpeed, setStarSpeed] = useState(0)
     const [fillColor, setFillColor] = useState("#000")
@@ -27,6 +32,7 @@ export const BlackHole:FC = () => {
     
     let pencil : CanvasRenderingContext2D | null 
     
+    // variable initialization
     if (canvasRef.current && containerRef.current){
         width = containerRef.current.clientWidth 
         height = containerRef.current.clientHeight
@@ -46,13 +52,13 @@ export const BlackHole:FC = () => {
         pencil.strokeStyle = '#fff';
     }
 
+    // mouse mousement
     let localVelocityX = 0
     let localVelocityY = 0
-
     document.onmousemove = (e : MouseEvent) => {
         const {pageX, pageY} = e
-        localVelocityX = (pageX - centerX) / 36 
-        localVelocityY = (pageY - centerY) / 36
+        localVelocityX = (pageX - centerX) * 0.05
+        localVelocityY = (pageY - centerY) * 0.05
     }
 
     const hyperSpeed = () => {
@@ -82,7 +88,6 @@ export const BlackHole:FC = () => {
     useEffect(() => {
         init()
         setStarSpeed(4)
-        console.log("init")
     }, [])
 
     if (starSpeed > 0){
@@ -109,36 +114,18 @@ export const BlackHole:FC = () => {
         pencil.fillRect( 0, 0, width, height);
 
         for(let i=0; i < numStars; i++){
-            // // Flag for if the star is offscreen (we don't want to draw it)
+            // condition for checking if the star should be drawn or not
             let draw=true;
 
-            /* Update the Star */
-            // AllStars[i][0]+=localVelocityX ;
-            // AllStars[i][1]+=localVelocityY ;
+            // update the star with the mouse position
+            if (false){
+                AllStars[i][0]-=localVelocityX ;
+                AllStars[i][1]-=localVelocityY ;
+            }
             AllStars[i][2]-=starSpeed;
             
-            /* Check the boundary conditions to make sure stars aren't offscreen. */
-            if(AllStars[i][0] < - height){ 
-                AllStars[i][0] += width << 1; 
-                draw=false;
-            }
-            if(AllStars[i][1]>centerY<<1){ 
-                AllStars[i][1]-=height<<1; 
-                draw=false; 
-            } 
-            if(AllStars[i][1]<-centerY<<1){ 
-                AllStars[i][1]+=height<<1; 
-                draw=false; 
-            }
-            if(AllStars[i][2]>depth){ 
-                AllStars[i][2]-=depth; 
-                draw=false;
-            } 
-            if(AllStars[i][2]<0){ 
-                AllStars[i][2]+=depth; 
-                draw=false; 
-            }
-            /* Check the boundary conditions to make sure stars aren't offscreen. */
+            // Check the boundary conditions to make sure stars aren't offscreen.
+           
             if(AllStars[i][0] > centerX << 1){ 
                 AllStars[i][0] -= width << 1; 
                 draw=false; 
@@ -192,13 +179,21 @@ export const BlackHole:FC = () => {
    
     return (
         <>
-        <div id="black-hole" ref={containerRef}>
-            <canvas width={100} height={100} ref={canvasRef} onClick={()=>{hyperSpeed()}}/>
+            <div id="black-hole" ref={containerRef}>
+
+            <canvas width={100} height={100} ref={canvasRef} />
 
             <div id="singularity" style={{
                 animation : expanded ? "singularity 4s ease-in 1s forwards" : ""
                 }} />
-        </div>
+            </div>
+
+            <WormHolesButton func={hyperSpeed} />
+            <HyperSpaceButton func={hyperSpeed} />
+
+            {(!expanded && children) &&
+            children
+            }
 
         </>
     ) 

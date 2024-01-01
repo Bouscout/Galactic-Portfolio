@@ -8,8 +8,8 @@ export const Ship: FC = () => {
     const trailSize = 20
     const [trail, setTrail] = useState<Array<Array<any>>>([])
     const [angle, setAngle] = useState(180)
-    const [posX, setPosX] = useState(0)
-    const [posY, setPosY] = useState(0)
+    const [posX, setPosX] = useState(750)
+    const [posY, setPosY] = useState(400)
 
     const isFlying = useStore(flying)
 

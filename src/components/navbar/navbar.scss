@@ -5,7 +5,7 @@ nav {
     z-index: 7;
     top: 0;
     left: 0;
-    height: 10vmin;
+    height: 7vmin;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -13,11 +13,15 @@ nav {
     div {
         display: flex;
         justify-content: space-evenly;
+        overflow: hidden;
+        height: 0px;
+        animation: slide-down 1000ms ease-in forwards;
+        animation-delay: 2000ms;
 
         button {
             position: relative;
             z-index: 1;
-            font-size: 0.5em;
+            font-size: 0.35em;
             font-family: monospace;
             background: transparent;
             color: #00cfc8;
@@ -50,5 +54,15 @@ nav {
         color: #00cfc8;
         font-size: 1em;
         font-weight: 100;
+
+        overflow: hidden;
+        height: 0px;
+        animation: slide-down 1000ms ease-in forwards;
+        animation-delay: 2000ms;
     }
+}
+
+@keyframes slide-down {
+    from {height: 0px;}
+    to {height: 100%;}
 }

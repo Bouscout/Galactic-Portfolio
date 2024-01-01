@@ -6,16 +6,27 @@ import { GeneralState } from "../state_management";
 
 import "./navbar.scss"
 
-export const Navbar:FC = () => {
+interface Props {
+    logo : boolean,
+    shortcuts : boolean,
+}
+
+export const Navbar:FC<Props> = ({ logo, shortcuts }) => {
     return (
         <nav>
-            <NameLogo />
 
+            
+            <NameLogo appear={logo} />
+            
+
+            {shortcuts &&
             <div>
                 <NavButton text="exploration" state="exploration"/>
                 <NavButton text="wormholes" state="accessibility"/>
                 <NavButton text="about-me" state="information"/>
             </div>
+            }
+
         </nav>
     )
 }
@@ -26,7 +37,7 @@ interface buttonProps {
 }
 
 const NavButton:FC<buttonProps> = ({text, state}) => {
-    const settingState = () => {
+    const settingState = () : void => {
         // create new dict and set all state to false
         const newState : {[key : string] : boolean} = {}
         Object.keys(GeneralState.get()).forEach(key => {
@@ -47,8 +58,17 @@ const NavButton:FC<buttonProps> = ({text, state}) => {
 }
 
 
-const NameLogo:FC = () => {
+interface Appear {
+    appear : boolean
+}
+
+const NameLogo:FC<Appear> = ({ appear }) => {
+
+    const inlineStyle: React.CSSProperties | null = appear ? {} : {
+        color : "transparent"
+    }
+
     return (
-        <h1>Cheick</h1>
+        <h1 style={inlineStyle}>Cheick</h1>
     )
 }

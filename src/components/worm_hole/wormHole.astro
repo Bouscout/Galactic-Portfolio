@@ -1,10 +1,13 @@
 ---
+import { Navbar } from "../navbar/navbar";
 import { WormHolePage } from "./worm_hole_page";
-import { WormWindow } from "./worm_window";
 
 import { BuushidoStreaming, ReinforcementLearning, DeepLNumpy, DiscordBot, UnityMl, RecommenderInfos } from "./projects";
 
 ---
+
+<Navbar logo={true} shortcuts={true} client:load />
+
 
 <WormHolePage 
 Projects={[

@@ -18,5 +18,5 @@ export const ExitButton :FC<Props> = ({func}) => {
             </button>
             <h4>Exit</h4>
         </div>
-        )
+    )
 }
