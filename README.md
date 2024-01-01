@@ -1,6 +1,6 @@
 # Galatic Portfolio Website
 
-I love Space so my not present all my projects in a universe exploration style 💫
+Portfolio website in a universe exploration style 💫
 
 ## Requirements
 ```text
