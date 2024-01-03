@@ -4,7 +4,8 @@ import AstreSpatiaux from "../components/spaceAstral/astresSpatiaux.astro"
 
 import { Navbar } from "../components/navbar/navbar"
 
-import WormHole from '../components/worm_hole/wormHole.astro';
+// import WormHole from '../components/worm_hole/wormHole.astro';
+import WormHoleV2 from '../components/worm_hole_v2/wormHoleV2.astro';
 import MyInfoState from "../components/my_info_state/myInfoState.astro"
 
 import { Universe } from "../components/universe"
@@ -19,7 +20,7 @@ import { Universe } from "../components/universe"
 		</Universe>
 		
 		<Universe mode='accessibility' client:load>
-			<WormHole />
+			<WormHoleV2 />
 		</Universe>
 		
 		<Universe mode='information' client:load>	

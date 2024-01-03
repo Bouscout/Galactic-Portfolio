@@ -60,6 +60,9 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
     if (margins.length === 0){return}
     else if (sizes.length === 0){return}
 
+    const [title, description, image] = Projects[0]
+    const i = 0
+
     return (
         <div id="worm-hole" onScroll={(evt)=>updateScroll(evt)}>
 
@@ -67,14 +70,20 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
 
             <div className="window">
                 
-                {Projects.map((project, i) => {
+                {/* {Projects.map((project, i) => {
                     const [title, description, image] = project
                     return <WormWindow key={i} titre={title} description={description}
                             image={image} margin={margins[i]}
                             scroll={scroll} size={sizes[i]}
                             index={i}
                             />
-                })}
+                })} */}
+
+                            <WormWindow key={i} titre={title} description={description}
+                                                        image={image} margin={margins[i]}
+                            scroll={scroll} size={sizes[i]}
+                            index={i}
+                            />
 
             </div>
         </div>

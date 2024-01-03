@@ -37,7 +37,7 @@ export const Ship: FC = () => {
     window.onclick = (e: MouseEvent) => {
         // Use e.target as HTMLElement to access the matches method
         flying.set(!flying.get());
-      };
+    };
    
 
       window.onmousemove = (e : MouseEvent) => {

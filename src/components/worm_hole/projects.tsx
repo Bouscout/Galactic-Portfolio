@@ -8,8 +8,9 @@ import Akira from "../../../assets/panoramas/akira3.webp"
 import RobotExploration from "../../../assets/panoramas/rl_3.webp"
 import BigCIty from "../../../assets/panoramas/ai_city_2.webp"
 
+type projectStruct = [string, string, ImageMetadata]
 
-export const BuushidoStreaming = [
+export const BuushidoStreaming : projectStruct = [
     "Media Nexus", // name
     "Explore my streaming website project, where innovation converges with a seamless user experience.", // description
     JapanFutur, // image
@@ -17,14 +18,14 @@ export const BuushidoStreaming = [
 
 
 
-export const DeepLNumpy = [
+export const DeepLNumpy : projectStruct = [
     "Numpy Planet",
     "Come observe the internal function of a deep learning network down to the mathematical operation on numpy planet.",
     Nebula
 ]
 
 
-export const DiscordBot = [
+export const DiscordBot : projectStruct = [
     "Discordia", // name
     "Explore Discordia where my programmed bot would animate your vocal sessions.", // description
     DiscordPlanet // image
@@ -32,21 +33,21 @@ export const DiscordBot = [
 
 
 
-export const RecommenderInfos = [
+export const RecommenderInfos : projectStruct = [
     "Animetropolis", // planetName
     "Navigate Animetropolis, a realm of precision recommendations powered by my robust recommender system, elevating the anime viewing experience.", // description
     Akira, // image
 ]
 
 
-export const ReinforcementLearning = [
+export const ReinforcementLearning : projectStruct = [
     "Reinforcera",
     "Experience Reinforceara, where my reinforcement learning project transforms Numpy into a powerful tool for mastering strategic challenges.",
     RobotExploration
 ]
 
 
-export const UnityMl = [
+export const UnityMl : projectStruct = [
     "MarioLand",
     "Comes see the hord of mario learning to play the baril dodger game perfectly in Unity.",
     BigCIty,

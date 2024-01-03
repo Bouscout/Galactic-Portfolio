@@ -20,54 +20,7 @@
       overflow-x: hidden;
     }
     
-    .window {
-        // old style
-        // display: grid;
-        // grid-template-columns: repeat(auto-fit, minmax(50%, 50%));
-        // justify-items: center;
-        // justify-content: center;
-        // padding: 10vmax 0;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    article {
-        // old style
-        // overflow: hidden;      
-        // position: relative;
-        // display: flex;
-        // width: 100%;
-        // aspect-ratio: 1.25;
-        // background-position: 50% 50%;
-        // background-repeat: no-repeat;
-        // background-size: auto 200%;
-        // border-radius: 0.2em;
-
-        
-        // div {
-        //   overflow: hidden;
-        //   border-radius: inherit;
-        //   transition: width 800ms ease-in, transform 250ms ease, opacity 250ms ease-in;
-        //   transform-origin: center;
-
-        //     &:hover {
-        //       .tilting-card{
-        //         opacity: 1;
-        //       }
-        //     }
-        // }
-
-        // .info-container{
-        //   position: absolute;
-        //   inset: 15%;
-        //   display: flex;
-        //   justify-content: center;
-        //   align-items: center;
-        // }
-
-        // new style
+    #panorama {
         display: grid;
         width: 100%;
         grid-template-columns: repeat(8, 100%);
@@ -76,31 +29,38 @@
         gap: 1vmin;
         padding-bottom: 2vmax;
         overflow-x: scroll;
-        
-        div {
-          width: 100%;
-          // aspect-ratio: 1.75;
-          aspect-ratio: 0.7;
-          // border-radius: 0.3em;
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-          background-size: 200% auto;
-        }
 
         &::-webkit-scrollbar{
-          // display: none; width: 0px; visibility: hidden;
-          height: 6px;
-      }
+            height: 6px;
+        }
 
-      &::-webkit-scrollbar-thumb{
-          background-color: #00cfc8;
-          border-radius: 2px;
-      }
-      
-      &::-webkit-scrollbar-track{
-          background-color: #00cfc862;
-      }
+        &::-webkit-scrollbar-thumb{
+            background-color: #00cfc8;
+            border-radius: 2px;
+        }
+        
+        &::-webkit-scrollbar-track{
+            background-color: #00cfc862;
+        }
+    }
 
+    article {
+        width: 100%;
+        aspect-ratio: 0.7;
+        border-radius: 0.1em;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: 200% auto;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+            .tilting-card {
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -145,10 +105,11 @@
 .tilting-card {
     // hide the card
     opacity: 0;
+    // border: solid lime;
     cursor: pointer;
 
     // handled in parent container    
-    // transition: transform 350ms ease, opacity 500ms ease; 
+    transition: transform 350ms ease, opacity 500ms ease; 
     // transition: all 1000ms;
 
     // 3d tilting component
@@ -166,13 +127,15 @@
 
 
     // styling
-    width: 80%;
-    height: 70%;
+    width: 95%;
+    // height: 70%;
+    aspect-ratio: 1.5;
 
     background-image:linear-gradient(to bottom, transparent, #090909 70%), url("../../../assets/panoramas/blue_nebula.webp");
     background-position: center;
     background-size: 100% auto;
     background-repeat: no-repeat;
+    border-radius: 0.1em;
 
     position: relative;
 
@@ -184,7 +147,7 @@
       width: 80%;
       margin: 0.5em auto;
       font-family: monospace;
-      font-size: 0.7em;
+      font-size: 0.5em;
       font-weight: 200;
       color: #fff;
     }
@@ -193,7 +156,7 @@
       width: 80%;
       margin: 0 auto;
       font-family: monospace;
-      font-size: 0.3em;
+      font-size: 0.25em;
       font-weight: 200;
       color: #bcbcbc;  
       margin-bottom: 1.3em;      
