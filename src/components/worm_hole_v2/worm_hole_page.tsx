@@ -16,8 +16,36 @@ interface Props {
 export const WormHolePage :FC<Props> = ({ Projects }) => {
     const [scrollPercent, setScrollPercent] = useState(0)
     const [scrollX, setScroll] = useState(0)
+    const [expanded, setExpanded] = useState(-1)
 
     const containerRef = useRef<HTMLDivElement>(null)
+
+    const cardWidth = 17
+    const separation = 2 + cardWidth
+    const range = separation * (Projects.length - 1)
+
+    const scrollSep = 50 / (Projects.length - 1)
+
+    let smallIndex = 0
+    const getCardPos = (index : number) : number => {
+        let position : number
+        let smallCardwidth = 6
+        if (expanded >= 0){
+
+            if(index === expanded){return -1}
+
+            position = 10 + (2 + smallCardwidth) * smallIndex
+            smallIndex += 1
+            return position
+        }
+        position = 50 + (separation * index) - (scrollPercent * range)
+        return position
+    }
+
+    const getScrollPos = (index : number) : number => {
+        const scrollPos = (50 + (index * scrollSep)) - (scrollPercent * 50)
+        return scrollPos
+    }
 
 
     const updateScroll = (event:React.UIEvent<HTMLElement>) => {
@@ -26,7 +54,7 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
         // get the percentage scrolled
         let value = event.target as HTMLDivElement
         
-        const weight = 0.7
+        const weight = 0.65
         // weighting the scroll
         if (containerRef.current){
             // containerRef.current.scrollLeft = scrollX
@@ -55,15 +83,27 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
 
             <HeadMessage />
 
+            <ExitButton func={setExpanded}/>
+            
+            {/* <SpecialCard /> */}
+
+            {Projects.map((project, i) => {
+                const [title, description, image] = project
+                const pos = getCardPos(i)
+                const scrollPos = getScrollPos(i)
+                return <WormWindow key={i} titre={title} 
+                        description={description} image={image}
+                        scroll={scrollPos} position={pos}
+                        index={i}
+                        select={expanded} trigger={setExpanded}
+                        />
+            })}
+
+            {/* place holder for scrolling */}
             <div id="panorama" onScroll={(evt)=>updateScroll(evt)} ref={containerRef} >
-
-                <SpecialCard />
-                
-                {Projects.map((project, i) => {
-                    const [title, description, image] = project
-                    return <WormWindow titre={title} description={description} image={image} scroll={scrollPercent}/>
+                {Array(Projects.length).fill(0).map(x => {
+                    return <div />
                 })}
-
             </div>
         </div>
     )
@@ -85,39 +125,58 @@ import Akira from "../../../assets/panoramas/akira2.webp"
 const SpecialCard = () => {
     const [expand, setExpand] = useState(false)
 
-    let styling : React.CSSProperties = {
+    const regular:React.CSSProperties = {
         transition : 'all 1000ms',
         backgroundImage : `url("${Akira.src}")`,
         position : 'absolute',
         left : '50%',
-        top : "50%",
         translate : "-50% -50%",
         zIndex : '5',
         border : 'solid lime',
+        backgroundPosition : 'center'
+    }
+
+    let styling : React.CSSProperties = {
+        ...regular ,
         width : '20%',
-        aspectRatio : "0.7",
-        backgroundSize : "auto 100%",
+        height : "60%",
+        top : "60%",
+        // aspectRatio : "0.7",
+        backgroundSize : 'cover'
+        // backgroundSize : "100vw auto",
     }
     
     if (expand){
         styling  = {
-            transition : 'all 1000ms',
-            backgroundImage : `url("${Akira.src}")`,
-            backgroundSize : "100% 100%",
-            position : 'absolute',
-            left : '50%',
-            top : "50%",
-            translate : "-50% -50%",
-            zIndex : '5',
-            border : 'solid lime',
+            ...regular,
+            top : '50%',
             width : '100%',
-            height : "100%"
+            height : '100%',
+            backgroundSize : 'cover'
+            
+            // backgroundSize : '100% auto'
+            // animation : "growAnimation 2s linear forwards",
         }
     }
 
     return (
-        <article style={styling} onClick={()=>setExpand(true)}>
+        <article style={styling} onClick={()=>setExpand(!expand)}>
 
         </article>
+    )
+}
+
+interface buttonProps {
+    func : Function
+} 
+
+export const ExitButton :FC<buttonProps> = () => {
+    return (
+        <button id="exit-button" style={{pointerEvents : "none"}}>
+            <h2>
+                <i className="fa-solid fa-xmark"></i>
+            </h2>
+            <h4>Close</h4>
+        </button>
     )
 }
