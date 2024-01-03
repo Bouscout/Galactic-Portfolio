@@ -56,6 +56,8 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
             <HeadMessage />
 
             <div id="panorama" onScroll={(evt)=>updateScroll(evt)} ref={containerRef} >
+
+                <SpecialCard />
                 
                 {Projects.map((project, i) => {
                     const [title, description, image] = project
@@ -75,5 +77,47 @@ const HeadMessage:FC = () => {
             {/* <CriptedTitle title="Jump into the wormholes to get directly to your destination 🚀." header={true} duration={3000}/> */}
             <h1>Jump into the wormholes to get directly to your destination 🚀.</h1>
         </header>
+    )
+}
+
+
+import Akira from "../../../assets/panoramas/akira2.webp"
+const SpecialCard = () => {
+    const [expand, setExpand] = useState(false)
+
+    let styling : React.CSSProperties = {
+        transition : 'all 1000ms',
+        backgroundImage : `url("${Akira.src}")`,
+        position : 'absolute',
+        left : '50%',
+        top : "50%",
+        translate : "-50% -50%",
+        zIndex : '5',
+        border : 'solid lime',
+        width : '20%',
+        aspectRatio : "0.7",
+        backgroundSize : "auto 100%",
+    }
+    
+    if (expand){
+        styling  = {
+            transition : 'all 1000ms',
+            backgroundImage : `url("${Akira.src}")`,
+            backgroundSize : "100% 100%",
+            position : 'absolute',
+            left : '50%',
+            top : "50%",
+            translate : "-50% -50%",
+            zIndex : '5',
+            border : 'solid lime',
+            width : '100%',
+            height : "100%"
+        }
+    }
+
+    return (
+        <article style={styling} onClick={()=>setExpand(true)}>
+
+        </article>
     )
 }

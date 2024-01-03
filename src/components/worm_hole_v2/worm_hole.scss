@@ -13,7 +13,7 @@
     h1 {
       margin-top: 5vmax;
       color: #fff;
-      font-size: 1.2em;
+      font-size: 0.8em;
       font-family: monospace;
       text-align: center;
       height: 25vh;
@@ -56,11 +56,25 @@
         justify-content: center;
         align-items: center;
 
+        transition: all 2000ms;
+        transition: width 1000ms, ;
+
         &:hover{
             .tilting-card {
                 opacity: 1;
             }
         }
+    }
+
+    .expanded{
+        z-index: 5;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: solid purple;
+        background-position: center;
     }
 }
 
