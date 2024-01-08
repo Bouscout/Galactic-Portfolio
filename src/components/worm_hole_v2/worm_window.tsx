@@ -1,8 +1,11 @@
 // worm hole window
 
-import Index from "../../pages/index.astro";
 import { TiltingInfos } from "../worm_hole/titlting_infos";
 import React, { useState, type FC } from "react";
+import BuushidoPage from "../../../assets/projects/buushido_website.png"
+const LongDescription = `Welcome to Buushido, your ultimate destination for anime streaming. Immerse yourself in a thoughtfully curated collection, seamlessly blending timeless classics with the latest sensations. With user-friendly features enhancing every aspect, Buushido ensures you spend your time savoring only the finest anime experiences`
+
+import { RegularCard } from "../informationCards/regularCard";
 
 interface windowProps {
     titre : string,
@@ -28,16 +31,16 @@ export const WormWindow:FC<windowProps> = ({titre, description, image, scroll, p
         inStyle = {
             zIndex : '3',
             
-            transition : `left 800ms var(--slow-fast), width 800ms var(--slow-fast), 
-            height 800ms var(--slow-fast), background-size 800ms var(--slow-fast), 
-            background-position 500ms var(--slow-fast)
+            transition : `left 1000ms var(--slow-fast), width 1000ms var(--slow-fast), 
+            height 1000ms var(--slow-fast), background-size 1000ms var(--slow-fast), 
+            background-position 500ms var(--slow-fast), background-images 1000ms var(--slow-fast)
             `,
             
             left : '50%',
             width : '100%',
             height : '100%',
             backgroundPosition : 'center',
-            backgroundImage : `url("${image.src}")`,
+            backgroundImage : `linear-gradient(to right, rgba(0, 0, 0, 0.53), rgba(0, 0, 0, 0.558)), url("${image.src}")`,
         }
         
     }
@@ -74,14 +77,25 @@ export const WormWindow:FC<windowProps> = ({titre, description, image, scroll, p
         <>
         <article style={inStyle} onClick={()=>expanding()}>
         
-        {/* {!expanded &&
-        <div >
+        {(!expanded && select === -1) &&
+        
         <TiltingInfos image={image}>
             <h2>{titre}</h2>
             <h3>{description}</h3>
-        </TiltingInfos>
-        </div>   
-        } */}
+        </TiltingInfos> 
+        }
+
+        {(expanded && select === index) &&
+        <div className="info">
+            <div className="intro-text">
+                <h2>{titre}</h2>
+                <h4>{description}</h4>
+
+                <button>Explore</button>
+            </div>
+        </div>
+
+        } 
 
         </article>
 

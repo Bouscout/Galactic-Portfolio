@@ -10,12 +10,14 @@ import MyInfoState from "../components/my_info_state/myInfoState.astro"
 
 import { Universe } from "../components/universe"
 
+import { ProjectInfoPage } from "../components/informationCards/info_page.tsx" 
+
 ---
 
 <Layout title="Cheick's Portfolio">
 
 	<main>
-		<Universe mode="exploration" client:load>
+		<!-- <Universe mode="exploration" client:load>
 			<AstreSpatiaux /> 
 		</Universe>
 		
@@ -25,7 +27,9 @@ import { Universe } from "../components/universe"
 		
 		<Universe mode='information' client:load>	
 			<MyInfoState />
-		</Universe>
+		</Universe> -->
+
+		<ProjectInfoPage />
 	</main>
 
 </Layout>

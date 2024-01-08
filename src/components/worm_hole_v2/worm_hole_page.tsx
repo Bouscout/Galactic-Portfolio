@@ -83,7 +83,9 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
 
             <HeadMessage />
 
+            {expanded >= 0 &&
             <ExitButton func={setExpanded}/>
+            }
             
             {/* <SpecialCard /> */}
 

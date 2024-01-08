@@ -1,5 +1,6 @@
 
 @import "../../layouts/colors";
+@import "../../layouts/button_styles";
 
 :root{
   --slow-fast : cubic-bezier(0,.93,.41,.86);
@@ -10,7 +11,8 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    background-color: #010d15;
+    // background-color: #010d15;
+    background-color: #090909;
     overflow-x: hidden;
     overflow-y: scroll;
 
@@ -29,13 +31,12 @@
     }
     
     #panorama {
-      border: solid purple;
       position: absolute;
       z-index: 2;
-      top: 10%;
+      top: 20%;
       left: 0;
       width: 100%;
-      height: 80%;
+      height: 70%;
       display: grid;
       width: 100%;
       grid-template-columns: repeat(8, 100%);
@@ -74,46 +75,65 @@
         background-repeat: no-repeat;
         background-size: cover;
         
+        // background: linear-gradient(to right, rgba(0, 0, 0, 0.53), rgba(0, 0, 0, 0.558));
         display: flex;
         justify-content: center;
         align-items: center;
+
+        filter: brightness(1);
         
         transition:width 800ms var(--slow-fast), height 800ms var(--slow-fast),
-        background-size 800ms var(--slow-fast);
+        background-size 800ms var(--slow-fast), filter 2000ms linear
+        ;
 
 
-        div {
+        .info {
           width: 100%;
-          height: 100%;
+          height: 80%;
           display: flex;
+          flex-direction: row;
           align-items: center;
-          justify-content: center;
-          // border: solid lime;
+          justify-content: space-evenly;
           border-radius: inherit;
 
-          &:hover{
-              .tilting-card {
-                  opacity: 1;
-              }
+          button{
+            margin-top: 1em;
+            border-radius: 0.2em;
+            font-family: monospace;
+            font-size: 0.5em ;
+            color: #fff;
+            background-color: #090909;
+            transition: color 500ms;
+            padding: 0.2em 0.5em;
+            @include button-spin-style();
+
+            &:hover {
+              color:  #AAFF00;
+            }
           }
+
+          div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+          }
+
+          h2 {
+            color: #fff;
+            font-size: 1em;
+          }
+
+          h4{
+            text-align: center;
+            font-size: 0.4em;
+            color: #fff;
+          }
+
+
         }
 
 
-    }
-
-    .expanded{
-        // z-index: 5;
-        // position: fixed;
-        // left: 0;
-        // top: 0;
-        width: 100%;
-        height: 100%;
-        border: solid purple;
-        background-position: center;
-
-        width : 100% ;
-        height : 100% ;
-        animation: growAnimation 2s linear forwards;
     }
 }
 
@@ -180,22 +200,21 @@
 }
 
 
+.intro-text {
+  opacity: 0;
+  animation: intro-text 2000ms var(--slow-fast) 1s forwards;
+}
 
 
-@keyframes growAnimation {
-  from {
-    transition:top 800ms var(--slow-fast), left 800ms var(--slow-fast), 800ms var(--slow-fast), height 800ms var(--slow-fast),
-    background-size 800ms var(--slow-fast);
-  }
-  95% {
-    transition:top 800ms var(--slow-fast), left 800ms var(--slow-fast), 800ms var(--slow-fast), height 800ms var(--slow-fast),
-    background-size 800ms var(--slow-fast);
-  }
-  to {
-    transition:width 800ms var(--slow-fast), height 800ms var(--slow-fast),
-    background-size 800ms var(--slow-fast);
-    border: solid lime;
-  }
+@keyframes intro-text {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
 }
 
 
@@ -262,12 +281,12 @@
 
     // styling
     width: 95%;
-    // height: 70%;
-    aspect-ratio: 1.5;
+    height: 100%;
+    // aspect-ratio: 1.5;
 
     background-image:linear-gradient(to bottom, transparent, #090909 70%), url("../../../assets/panoramas/blue_nebula.webp");
     background-position: center;
-    background-size: 100% auto;
+    background-size: cover;
     background-repeat: no-repeat;
     border-radius: 0.1em;
 
@@ -276,6 +295,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    &:hover {
+      opacity: 1;
+    }
     
     h2 {
       width: 80%;
