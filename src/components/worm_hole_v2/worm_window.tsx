@@ -2,15 +2,23 @@
 
 import { TiltingInfos } from "../worm_hole/titlting_infos";
 import React, { useState, type FC } from "react";
-import BuushidoPage from "../../../assets/projects/buushido_website.png"
-const LongDescription = `Welcome to Buushido, your ultimate destination for anime streaming. Immerse yourself in a thoughtfully curated collection, seamlessly blending timeless classics with the latest sensations. With user-friendly features enhancing every aspect, Buushido ensures you spend your time savoring only the finest anime experiences`
+import { useGeneralState } from "../state_management";
 
-import { RegularCard } from "../informationCards/regularCard";
+
+interface projectStruct {
+    index : number,
+    name : string,
+    shortDescription : string,
+    image : ImageMetadata,
+    description  : string,
+    techStack : string[],
+    details : any[],
+    gitLink : string,
+    webLink? : string,
+}
 
 interface windowProps {
-    titre : string,
-    description : string,
-    image : ImageMetadata,
+    project : projectStruct,
     scroll : number,
     position : number,
     index : number
@@ -18,8 +26,10 @@ interface windowProps {
     trigger : Function,
 }
 
-export const WormWindow:FC<windowProps> = ({titre, description, image, scroll, position, select, trigger, index }) => {
+export const WormWindow:FC<windowProps> = ({project, scroll, position, select, trigger, index }) => {
     const [expanded, setExpanded] = useState(false)
+
+    const {name, image, shortDescription} = project
 
     let inStyle : React.CSSProperties = {
         left : `${position}%`,
@@ -72,6 +82,10 @@ export const WormWindow:FC<windowProps> = ({titre, description, image, scroll, p
         console.log("setting : ", !expanded)
     }
 
+    const triggerInfo = () => {
+        useGeneralState(null, project.index)        
+    }
+
 
     return (
         <>
@@ -80,18 +94,19 @@ export const WormWindow:FC<windowProps> = ({titre, description, image, scroll, p
         {(!expanded && select === -1) &&
         
         <TiltingInfos image={image}>
-            <h2>{titre}</h2>
-            <h3>{description}</h3>
+            
+            <h2>{name}</h2>
+            <h3>{shortDescription}</h3>
         </TiltingInfos> 
         }
 
         {(expanded && select === index) &&
         <div className="info">
             <div className="intro-text">
-                <h2>{titre}</h2>
-                <h4>{description}</h4>
+                <h2>{name}</h2>
+                <h4>{shortDescription}</h4>
 
-                <button>Explore</button>
+                <button onClick={()=>triggerInfo()}>Explore</button>
             </div>
         </div>
 

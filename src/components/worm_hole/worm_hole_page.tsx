@@ -7,8 +7,21 @@ import { WormWindow } from "./worm_window"
 
 import "./worm_hole.scss"
 
+
+interface projectStruct {
+    index : number,
+    name : string,
+    shortDescription : string,
+    image : ImageMetadata,
+    description  : string,
+    techStack : string[],
+    details : any[],
+    gitLink : string,
+    webLink? : string,
+}
+
 interface Props{
-    Projects : Array<any>
+    Projects : projectStruct[]
 }
 
 export const WormHolePage :FC<Props> = ({ Projects }) => {    
@@ -60,7 +73,6 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
     if (margins.length === 0){return}
     else if (sizes.length === 0){return}
 
-    const [title, description, image] = Projects[0]
     const i = 0
 
     return (
@@ -70,20 +82,11 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
 
             <div className="window">
                 
-                {/* {Projects.map((project, i) => {
-                    const [title, description, image] = project
-                    return <WormWindow key={i} titre={title} description={description}
-                            image={image} margin={margins[i]}
-                            scroll={scroll} size={sizes[i]}
-                            index={i}
-                            />
-                })} */}
-
-                            <WormWindow key={i} titre={title} description={description}
-                                                        image={image} margin={margins[i]}
-                            scroll={scroll} size={sizes[i]}
-                            index={i}
-                            />
+                <WormWindow key={i} titre={title} description={description}
+                                            image={image} margin={margins[i]}
+                scroll={scroll} size={sizes[i]}
+                index={i}
+                />
 
             </div>
         </div>

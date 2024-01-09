@@ -3,7 +3,7 @@
 // display a sidebar and in depth project details
 // preferably visual informations
 
-import type { FC } from "react"
+import type { FC, ReactNode } from "react"
 import "./infos_page.scss"
 
 import { SideBar } from "./sideBar"
@@ -18,31 +18,49 @@ const Title = "Buushido Anime Streaming"
 const link = "https://buushido.com"
 const githubLink = "https://github.com/Bouscout/Buushido_Frontend"
 
-import BuushidoPage from "../../../assets/projects/buushido_website.png"
-import BuushidoView from "../../../assets/projects/buushido_view_page.png"
-import BuushidoFilm from "../../../assets/projects/buushido_film_page.png"
+
 const LongDescription = `Welcome to Buushido, your ultimate destination for anime streaming. Immerse yourself in a thoughtfully curated collection, seamlessly blending timeless classics with the latest sensations. With user-friendly features enhancing every aspect, Buushido ensures you spend your time savoring only the finest anime experiences`
 
 
-export const ProjectInfoPage:FC = () => {
+interface projectStruct {
+    name : string,
+    shortDescription : string,
+    image : ImageMetadata,
+    description  : string,
+    techStack : string[],
+    details : any[],
+    gitLink : string,
+    webLink? : string,
+}
+
+interface Props {
+    project : projectStruct,
+    children : ReactNode,
+}
+
+export const ProjectInfoPage:FC<Props> = ({ project, children }) => {
     
+    const { name, description, techStack, gitLink, webLink, image, details} = project
     
     return (
         <section id="project-container">
             <SideBar 
-            title={Title}
-            techStack={["Python", "JavaScript", "Django", "ReactJs", "MySQL", "RestAPI"]}
-            description={shortDescription}
-            gitLinks={githubLink}
-            webLinks={link}
-            >
-                <NavButtons />
+            title={name}
+            techStack={techStack}
+            description={description}
+            gitLinks={gitLink}
+            webLinks={webLink}
+            image={image}
+            >   
+                {/* nav buttons */}
+                {children} 
+                {/* nav buttons */}
 
             </SideBar>
             
             
             <ProjectDetails
-            images={[BuushidoPage, BuushidoView, BuushidoFilm]}
+            images={details}
             />
         </section>
     )

@@ -10,7 +10,7 @@ import MyInfoState from "../components/my_info_state/myInfoState.astro"
 
 import { Universe } from "../components/universe"
 
-import { ProjectInfoPage } from "../components/informationCards/info_page.tsx" 
+import ProjectInformations from '../components/informationCards/projectInformations.astro';
 
 ---
 
@@ -19,7 +19,7 @@ import { ProjectInfoPage } from "../components/informationCards/info_page.tsx"
 	<main>
 		<!-- <Universe mode="exploration" client:load>
 			<AstreSpatiaux /> 
-		</Universe>
+		</Universe> -->
 		
 		<Universe mode='accessibility' client:load>
 			<WormHoleV2 />
@@ -27,9 +27,10 @@ import { ProjectInfoPage } from "../components/informationCards/info_page.tsx"
 		
 		<Universe mode='information' client:load>	
 			<MyInfoState />
-		</Universe> -->
+		</Universe>
 
-		<ProjectInfoPage />
+		<ProjectInformations />
+
 	</main>
 
 </Layout>

@@ -3,13 +3,26 @@
 @import "../../layouts/colors";
 
 #project-container {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
     display: grid;
     grid-template-columns: 30% 70%;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
     border: solid purple;
     
+    &::after{
+        content: "";
+    }
+    
+    &::after{
+        position: absolute;
+        z-index: 4;
+        background-image: linear-gradient(to bottom, black, transparent 15%);
+        inset: 0;
+        pointer-events: none;
+    }
+
     section {
         display: flex;
         flex-direction: column;
@@ -17,8 +30,7 @@
         // height: 100%;
         overflow-y: scroll;
 
-        
-        
+        // style for the sidebar section
         &:nth-child(1){
             color: #fff;
             gap: 0.5em;
@@ -26,6 +38,10 @@
             align-items: center;
             overflow: hidden;
             border-right: 2px solid $neon-orange;
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
 
             .tech-stack {
                 display: flex;
@@ -80,15 +96,39 @@
 
         }
 
+        // style for the picture section
         &:nth-child(2){
             justify-content: flex-start;
+            gap: 1em;
+            background-color: $black;
+
+            &::-webkit-scrollbar{
+                // display: none; width: 0px; visibility: hidden;
+                width: 3px;
+            }
+
+            &::-webkit-scrollbar-thumb{
+                background-color: $neon-orange;
+                border-radius: 2px;
+            }
+            
+            &::-webkit-scrollbar-track{
+                background-color: $black;
+            }
         }
 
         .nav-container{
             display: grid;
-            grid-template-columns: 50% 50%;
+            grid-template-columns: 40% 20% 40%;
             justify-content: center;
             width: 100%;
+
+            h2 {
+                font-family: monospace;
+                font-size: 0.5em;
+                font-weight: 200;
+                margin-top: 0.5em;
+            }
 
             .move-button {
                 display: flex;
@@ -97,7 +137,7 @@
                 // grid-template-columns: 50% 50%;
                 justify-content: center;
                 align-items: center;
-                margin-left: 5vmin;
+                margin-left: 4vmin;
 
                 .exit-button{
                     margin: 0;

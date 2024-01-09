@@ -4,16 +4,26 @@ import { useState, type FC, useEffect, useRef } from "react";
 import { CriptedTitle } from "../spaceAstral/astre_title"
 
 import { WormWindow } from "./worm_window"
+import { All_Projects } from "../all_projects";
+
 
 import "./worm_hole.scss"
 
-type projectStruct = [string, string, ImageMetadata]
-
-interface Props {
-    Projects: projectStruct[];
+interface projectStruct {
+    index : number,
+    name : string,
+    shortDescription : string,
+    image : ImageMetadata,
+    description  : string,
+    techStack : string[],
+    details : any[],
+    gitLink : string,
+    webLink? : string,
 }
 
-export const WormHolePage :FC<Props> = ({ Projects }) => {
+export const WormHolePage :FC = () => {
+    const Projects : projectStruct[] = All_Projects
+
     const [scrollPercent, setScrollPercent] = useState(0)
     const [scrollX, setScroll] = useState(0)
     const [expanded, setExpanded] = useState(-1)
@@ -90,11 +100,10 @@ export const WormHolePage :FC<Props> = ({ Projects }) => {
             {/* <SpecialCard /> */}
 
             {Projects.map((project, i) => {
-                const [title, description, image] = project
                 const pos = getCardPos(i)
                 const scrollPos = getScrollPos(i)
-                return <WormWindow key={i} titre={title} 
-                        description={description} image={image}
+                
+                return <WormWindow key={i} project={project}
                         scroll={scrollPos} position={pos}
                         index={i}
                         select={expanded} trigger={setExpanded}
@@ -155,9 +164,6 @@ const SpecialCard = () => {
             width : '100%',
             height : '100%',
             backgroundSize : 'cover'
-            
-            // backgroundSize : '100% auto'
-            // animation : "growAnimation 2s linear forwards",
         }
     }
 

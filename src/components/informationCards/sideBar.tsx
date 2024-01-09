@@ -4,20 +4,30 @@
 // description
 // links
 
-import type { FC, ReactNode } from "react"
+import type {  FC, ReactNode } from "react"
 
 interface Props {
     title : string,
     description : string,
     techStack : string[],
     gitLinks : string,
-    webLinks : string,
-    children : ReactNode
+    webLinks? : string,
+    children : ReactNode,
+    image : ImageMetadata,
 }
 
-export const SideBar:FC<Props> = ({title, description, techStack, gitLinks, webLinks, children}) => {
+export const SideBar:FC<Props> = ({title, description, techStack, gitLinks, webLinks=null, children, image}) => {
+
+    const inStyle : React.CSSProperties = {
+        backgroundImage : `linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)) ,url("${image.src}")`,
+        backgroundSize : "cover",
+        backgroundPosition : "center",
+        backgroundRepeat : 'no-repeat', 
+    }
+
+
     return (
-        <section className="side-bar">
+        <section className="side-bar" style={inStyle}>
 
             {children}
 
@@ -25,8 +35,9 @@ export const SideBar:FC<Props> = ({title, description, techStack, gitLinks, webL
             
             <div className="tech-stack">
             {techStack.map((tech, i) => {
+                const tag = "#"
                 return (
-                    <h3 key={i}>{tech}</h3>
+                    <h3 key={i}>{tag + tech}</h3>
                     )
             })}
             </div>
@@ -40,9 +51,8 @@ export const SideBar:FC<Props> = ({title, description, techStack, gitLinks, webL
                 <VisitButton link={webLinks} name="Website"/>
                 }
 
-                {gitLinks &&
                 <VisitButton link={gitLinks} name="GitHub"/>
-                }
+                
             </div>
             
 
