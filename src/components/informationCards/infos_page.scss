@@ -4,7 +4,7 @@
 
 #project-container {
     position: absolute;
-    z-index: 3;
+    z-index: 8;
     inset: 0;
     display: grid;
     grid-template-columns: 30% 70%;
@@ -99,8 +99,9 @@
         // style for the picture section
         &:nth-child(2){
             justify-content: flex-start;
-            gap: 1em;
+            gap: 0.5em;
             background-color: $black;
+            padding-block: 0.5em;
 
             &::-webkit-scrollbar{
                 // display: none; width: 0px; visibility: hidden;

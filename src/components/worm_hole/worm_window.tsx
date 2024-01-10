@@ -1,6 +1,6 @@
 // worm hole window
 
-import { TiltingInfos } from "./titlting_infos";
+import { TiltingInfos } from "../informationCards/titlting_infos";
 import { useState, type FC, useEffect, useRef } from "react";
 
 

@@ -6,7 +6,7 @@ import { ProjectInfoPage } from "./info_page"
 import { NavButtons } from "./navButtons"
 
 import { All_Projects } from "../all_projects"
-import { GeneralState, useGeneralState } from "../state_management"
+import { GeneralState, useGeneralState, flying } from "../state_management"
 import { useStore } from "@nanostores/react"
 
 export const InformationWrapper:FC = () => {
@@ -20,7 +20,10 @@ export const InformationWrapper:FC = () => {
     }, [useStore(GeneralState)["project"]])
 
     // exit if no prokect render
-    if (active < 0){console.log("not displaying");return}
+    if (active < 0){return}
+
+    // land the ship
+    flying.set(false)
 
     const next = () => {
         const nextActive = active + 1 >= All_Projects.length ? 0 : active + 1

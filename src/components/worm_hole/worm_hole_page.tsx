@@ -5,7 +5,7 @@ import { CriptedTitle } from "../spaceAstral/astre_title"
 
 import { WormWindow } from "./worm_window"
 
-import "./worm_hole.scss"
+// import "./worm_hole.scss"
 
 
 interface projectStruct {

@@ -5,6 +5,8 @@
 
 import BlueNebula from "../../../assets/panoramas/blue_nebula.webp"
 
+import "./tilting_info.scss"
+
 import { type FC, type ReactNode } from "react"
 
 interface Props {

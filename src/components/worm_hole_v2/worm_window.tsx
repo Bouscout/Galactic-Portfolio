@@ -1,6 +1,6 @@
 // worm hole window
 
-import { TiltingInfos } from "../worm_hole/titlting_infos";
+import { TiltingInfos } from "../informationCards/titlting_infos";
 import React, { useState, type FC } from "react";
 import { useGeneralState } from "../state_management";
 
@@ -84,20 +84,23 @@ export const WormWindow:FC<windowProps> = ({project, scroll, position, select, t
 
     const triggerInfo = () => {
         useGeneralState(null, project.index)        
+       
     }
 
 
     return (
         <>
-        <article style={inStyle} onClick={()=>expanding()}>
+        <article style={inStyle}>
         
         {(!expanded && select === -1) &&
         
+        <div onClick={()=>expanding()}>
         <TiltingInfos image={image}>
             
             <h2>{name}</h2>
             <h3>{shortDescription}</h3>
         </TiltingInfos> 
+        </div>
         }
 
         {(expanded && select === index) &&

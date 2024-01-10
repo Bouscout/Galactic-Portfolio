@@ -60,7 +60,7 @@ export const ProjectInfoPage:FC<Props> = ({ project, children }) => {
             
             
             <ProjectDetails
-            images={details}
+            elements={details}
             />
         </section>
     )

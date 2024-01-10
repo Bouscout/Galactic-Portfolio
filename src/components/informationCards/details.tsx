@@ -4,17 +4,32 @@
 import type { FC } from "react"
 
 interface Props {
-    images : ImageMetadata[] ,
+    elements : any[] ,
 }
 
-export const ProjectDetails:FC<Props> = ({ images }) => {
+export const ProjectDetails:FC<Props> = ({ elements }) => {
+    const format = elements[0]
+    elements = elements.slice(1, elements.length)
     return (
         <section>
-            {images.map((image, i) => {
+           {elements.map((element, i) => {
+            if (format === "img"){
+                const image: ImageMetadata = element
                 return (
-                    <img key={i} src={image.src} alt="Project Image"></img>
+                    <img src={image.src} alt="Project image" key={i}></img>
                 )
-            })}
+            
+            }else if (format === "video"){
+
+                const videoSrc : string = element
+                return (
+                    <video loop autoPlay >
+                        <source src={videoSrc} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                )
+            }
+           })}
         </section>
     )
 }

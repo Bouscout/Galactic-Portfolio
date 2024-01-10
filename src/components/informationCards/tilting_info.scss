@@ -1,0 +1,141 @@
+
+
+@mixin tilting-card-layout($columns, $rows) {
+
+    $column-width : calc(100% / $columns) ;
+    $row-height : calc(100% / $rows);
+  
+    #mouse-tracker {
+        position: absolute;
+        inset: 0;
+        
+        div {
+            position: absolute;
+            z-index: 2;
+            width: $column-width;
+            height: $row-height;
+            
+            @for $colIndex from 0 to $columns {
+                
+                &:nth-of-type(#{$columns}n - #{$colIndex}){
+                    right: calc($colIndex * $column-width);
+                }
+            }
+            
+            @for $rowIndex from 0 to $rows{
+
+                $start : ($rowIndex * $rows) + 1 ;
+                $end : ($rowIndex * $rows) + $rows ;
+                
+                &:nth-child(n + #{$start}):nth-child(-n + #{$end}){
+                    z-index: 5;
+                            top : calc($rowIndex * $row-height) ;
+              }
+            }
+          }
+        }
+}
+
+
+.tilting-card {
+    // hide the card
+    opacity: 0;
+    // border: solid lime;
+    cursor: pointer;
+
+    // handled in parent container    
+    transition: transform 350ms ease, opacity 500ms ease; 
+    // transition: all 1000ms;
+
+    // 3d tilting component
+    @include tilting-card-layout(
+        3, 3
+        ) ;
+    --perspective: 50vw;
+    --rotateX: 0;
+    --rotateY: 0;
+    --angle: 5deg;
+    
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+    rotateY(var(--rotateY));
+
+
+    // styling
+    width: 95%;
+    height: 100%;
+    // aspect-ratio: 1.5;
+
+    background-image:linear-gradient(to bottom, transparent, #090909 70%), url("../../../assets/panoramas/blue_nebula.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0.1em;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    &:hover {
+      opacity: 1;
+    }
+    
+    h2 {
+      width: 80%;
+      margin: 0.5em auto;
+      font-family: monospace;
+      font-size: 0.5em;
+      font-weight: 200;
+      color: #fff;
+    }
+    
+    h3 {
+      width: 80%;
+      margin: 0 auto;
+      font-family: monospace;
+      font-size: 0.25em;
+      font-weight: 200;
+      color: #bcbcbc;  
+      margin-bottom: 1.3em;      
+  }
+}
+  
+  // style to make the card interactive
+  .tilting-card:has(#mouse-tracker > div:nth-child(1):hover) {
+    --rotateX: var(--angle);
+    --rotateY: calc(var(--angle) * -1);
+  }
+  
+  .tilting-card:has( #mouse-tracker > div:nth-child(2):hover) {
+    --rotateX: var(--angle);
+  }
+  
+  .tilting-card:has( #mouse-tracker > div:nth-child(3):hover) {
+    --rotateX: var(--angle);
+    --rotateY: var(--angle);
+  }
+  
+  .tilting-card:has( #mouse-tracker > div:nth-child(4):hover) {
+    --rotateY: calc(var(--angle) * -1);
+  }
+  
+  .tilting-card:has( #mouse-tracker > div:nth-child(6):hover) {
+    --rotateY: var(--angle);
+  }
+  
+  .tilting-card:has( #mouse-tracker > div:nth-child(7):hover) {
+    --rotateX: calc(var(--angle) * -1);
+    --rotateY: calc(var(--angle) * -1);
+  }
+  
+  .tilting-card:has( #mouse-tracker > div:nth-child(8):hover) {
+    --rotateX: calc(var(--angle) * -1);
+  }
+  
+  .tilting-card:has( #mouse-tracker > div:nth-child(9):hover) {
+    --rotateX: calc(var(--angle) * -1);
+    --rotateY: var(--angle);
+  }
+  
