@@ -1,46 +1,50 @@
 import { useStore } from "@nanostores/react";
-import { velocityX, velocityY, flying, Positions } from "../state_management";
+import { velocityX, velocityY, flying, Positions, useGeneralState } from "../state_management";
 import { useState, type FC, type ReactNode } from "react";
 
-import { ExploreButton, ExitButton } from "./navButton"
+import { ExploreButton } from "./navButton"
 import { CriptedTitle } from "./astre_title"
 
 
-interface Props {
-    id : number,
-    x : number,
-    y : number,
-    title : string,
+interface projectStruct {
+    index : number,
+    name : string,
+    shortDescription : string,
     image : ImageMetadata,
-    children : ReactNode,
+    planetImage : ImageMetadata,
+    description  : string,
+    techStack : string[],
+    details : any[],
+    gitLink : string,
+    webLink? : string,
+}
+
+interface Props {
+    project : projectStruct,
 }
 
 
-export const AstreSpatial: FC<Props> = ({id, x, y, image, title, children}) => { 
+export const AstreSpatial: FC<Props> = ({ project }) => { 
     const renderDistance = 2000 // distance at which we render
     const detailsRenderDistance = 500
 
+    const {index, name, planetImage} = project
+    
+    const x = Positions.get()[index][0] 
+    const y = Positions.get()[index][1] 
+
     const [posX, setPosX] = useState(x)
     const [posY, setPosY] = useState(y)
-    const [trigger, setTrigger] = useState(false)
     const [landed, setLanded] = useState(false)
-
 
     const setLanding = () => {
         // const state = useStore(flying)
         const state = flying.get()
         setLanded(!landed)
         flying.set(landed)
-        console.log("landed on ", title, posX, posY)
+        console.log("landed on ", name, posX, posY)
         setPosX(0)
         setPosY(0)
-    }
-
-    const triggerInfoPage = (state:boolean) => {
-        setTrigger(state)
-        setTimeout(() => {
-            flying.set(false)
-        }, 100);
     }
 
     const adjust = 0.5
@@ -51,17 +55,14 @@ export const AstreSpatial: FC<Props> = ({id, x, y, image, title, children}) => {
     setTimeout(() => {
         if (flying.get()){
             setPosX((prevPosX) => prevPosX - velX);
-            setPosY((prevPosY) => prevPosY - velY);
-
-            // change position
-            
+            setPosY((prevPosY) => prevPosY - velY);    
         }
         
     }, 50);
     
     // update position coordinate
-    Positions.get()[id][0] = posX 
-    Positions.get()[id][1] = posY 
+    Positions.get()[index][0] = posX 
+    Positions.get()[index][1] = posY 
     
     if (Math.abs(posX) > renderDistance){return}
     if (Math.abs(posY) > renderDistance){return}
@@ -71,29 +72,25 @@ export const AstreSpatial: FC<Props> = ({id, x, y, image, title, children}) => {
         renderDetails = false
     }
 
+    const triggerInfoPage = () => {
+        useGeneralState(null, index)
+    }
+
     return (
         <>
-        {trigger ?
-
-        <>
-        <ExitButton func={triggerInfoPage}/>
-        {children}
-        </> :
-
 
         <div 
         onClick={()=>{setLanding()}} 
         className="astre" 
         style={{
-            backgroundImage : `url(${image.src})`,
+            backgroundImage : `url(${planetImage.src})`,
             transform : `translate(${posX}px, ${posY}px)`,
-            border : trigger ? "3px solid red" : "3px solid transparent"
         }}>
 
             <div>          
                 {renderDetails &&
                 <>
-                <CriptedTitle title={title}/>
+                <CriptedTitle title={name}/>
                 <ExploreButton func={triggerInfoPage} />
                 </>
                 }
@@ -102,7 +99,7 @@ export const AstreSpatial: FC<Props> = ({id, x, y, image, title, children}) => {
         </div>
 
 
-        }
+        
         </>
     )
 }

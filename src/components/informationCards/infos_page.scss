@@ -1,0 +1,236 @@
+
+@import "../../layouts/button_styles";
+@import "../../layouts/colors";
+
+#project-container {
+    position: absolute;
+    z-index: 8;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    overflow: hidden;
+    border: solid purple;
+    
+    &::after{
+        content: "";
+    }
+    
+    &::after{
+        position: absolute;
+        z-index: 4;
+        background-image: linear-gradient(to bottom, black, transparent 15%);
+        inset: 0;
+        pointer-events: none;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        // height: 100%;
+        overflow-y: scroll;
+
+        // style for the sidebar section
+        &:nth-child(1){
+            color: #fff;
+            gap: 0.5em;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-right: 2px solid $neon-orange;
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            .tech-stack {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.1em;
+                margin: 0 0.5em;
+                background-image: linear-gradient(90deg, $neon-purple, $neon-orange);
+                background-clip: text;
+            }
+            
+            h2 {
+                text-align: center;
+                font-size: 0.6em;
+                font-family: monospace;
+            }
+
+            h3 {
+                font-size: 0.4em;
+                -webkit-text-fill-color: transparent;
+            }
+            h4 {
+                color: #a6a6a6;
+                font-family: monospace;
+                margin: 0 1em;
+                font-size: 0.3em;
+                font-weight: 400;
+            }
+
+            .link-button {
+
+                button {
+                    $button-color : #013038;
+                    
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.35em;
+                    margin: 0 0.5em;
+                    color: #fff;
+                    
+                    padding: 0.28em 0.45em;
+                    border-radius: 0.2em;
+                    outline: none ;
+                    border: none ;
+                    
+                    background-color: $button-color;
+                    box-shadow: 0 0 40px -8px $button-color;
+                    border: solid map-get($map: $blue-planet, $key: primary );
+                    
+                    @include color-swap-button();
+                }
+            }
+
+
+        }
+
+        // style for the picture section
+        &:nth-child(2){
+            justify-content: flex-start;
+            gap: 0.5em;
+            background-color: $black;
+            padding-block: 0.5em;
+
+            &::-webkit-scrollbar{
+                // display: none; width: 0px; visibility: hidden;
+                width: 3px;
+            }
+
+            &::-webkit-scrollbar-thumb{
+                background-color: $neon-orange;
+                border-radius: 2px;
+            }
+            
+            &::-webkit-scrollbar-track{
+                background-color: $black;
+            }
+        }
+
+        .nav-container{
+            display: grid;
+            grid-template-columns: 40% 20% 40%;
+            justify-content: center;
+            width: 100%;
+
+            h2 {
+                font-family: monospace;
+                font-size: 0.5em;
+                font-weight: 200;
+                margin-top: 0.5em;
+            }
+
+            .move-button {
+                display: flex;
+                flex-wrap: nowrap;
+                width: 100%;
+                // grid-template-columns: 50% 50%;
+                justify-content: center;
+                align-items: center;
+                margin-left: 4vmin;
+
+                .exit-button{
+                    margin: 0;
+                    padding: 0;
+                    width: 30%;
+
+                    button {
+                        &:hover {
+                            background-color: $neon-orange;
+                        }
+                    }
+                }
+                
+            }
+
+            
+            .exit-button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                max-width: 10vmin;
+                button {
+                    
+                    outline: none;
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                    cursor: pointer;
+                    transition: all 200ms;
+                    border: none;
+                    
+                    background-color: black;
+                    
+                    width: 70%;
+                    // height: 100%;
+                    aspect-ratio: 1;
+                    border-radius: 0.4em;
+                    border: solid map-get($map: $blue-planet, $key: primary);
+                    
+                    color: $white;
+                    font-size: 0.4em;
+                    
+                    transition: color 200ms ease, background-color 500ms ease;
+
+                    display: grid;
+                    place-items: center;
+                    
+                    &:hover {
+                        background-color: $neon-red;
+                    }
+                }
+
+                i {
+                    font-size: 0.8em;
+                }
+
+                
+                h4{
+                    text-align: center;
+                    font-family: monospace;
+                    color: $white;
+                    opacity: 0;
+                    transition: opacity 200ms;
+                    font-size: 0.3em;
+                    font-weight: 300;
+                }
+
+                &:hover {
+
+                    h4{
+                        opacity: 1;
+                    }
+                }
+            }
+
+
+        }
+       
+    }
+}
+
+
+// Media query for screens smaller than 600px
+@media screen and (max-width: 600px) {
+    #project-container {
+        display: flex;
+        flex-direction: column;
+
+        section {
+            &:nth-child(1){
+                height: 55vh;
+                border-bottom: 2px solid $neon-orange;
+            }
+        }
+    }
+  }

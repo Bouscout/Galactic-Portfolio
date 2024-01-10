@@ -2,7 +2,7 @@
 
 import type { FC } from "react";
 
-import { GeneralState } from "../state_management";
+import { GeneralState, useGeneralState } from "../state_management";
 
 import "./navbar.scss"
 
@@ -14,11 +14,9 @@ interface Props {
 export const Navbar:FC<Props> = ({ logo, shortcuts }) => {
     return (
         <nav>
-
             
             <NameLogo appear={logo} />
             
-
             {shortcuts &&
             <div>
                 <NavButton text="exploration" state="exploration"/>
@@ -37,18 +35,9 @@ interface buttonProps {
 }
 
 const NavButton:FC<buttonProps> = ({text, state}) => {
+
     const settingState = () : void => {
-        // create new dict and set all state to false
-        const newState : {[key : string] : boolean} = {}
-        Object.keys(GeneralState.get()).forEach(key => {
-            newState[key] = false
-        });
-
-        // set the selected state to true
-        newState[state] = true
-
-        GeneralState.set(newState)
-        console.log("activate : ", state)
+       useGeneralState(state=state)
     }
 
 

@@ -4,21 +4,13 @@ import "./astre.scss"
 import { Navbar } from "../navbar/navbar"
 
 import { AstreSpatial } from "./astre_spatial"
-import { BuushidoProject } from "./informationCards/buushido_streaming"
-import { RecommendationSystem} from "./informationCards/recommender_system"
 import { Compass } from "../compass/compass"
 import { MessageWindow } from "../message_window/message_window"
 
 import Galaxie from "../galaxie/galaxie.astro"
 import SpaceShip from "../space_shuttle/spaceShip.astro"
 
-import jupiter from "../../../assets/planets/jupiter.webp"
-import NebulaSaturne from "../../../assets/planets/saturne_green_nebula.webp"
-import NeonPlanet from "../../../assets/planets/neon_planet.webp"
-import bigCityPlanet from "../../../assets/planets/big_city.webp"
-import introPlanet from "../../../assets/planets/intro.webp"
-import JapanPlanet from "../../../assets/planets/japan_planet.webp"
-
+import { All_Projects } from "../all_projects"
 
 const introMessage = `Welcome to the project universe, navigate your ship using your mouse and click on any planet to land on it.
 
@@ -39,7 +31,13 @@ At any point you can jump to a more accessible view of all the projects by click
 
 <MessageWindow msg={introMessage} delay={500} speed={16} client:load/>
 
-<AstreSpatial id={1} x={500} y={-3000} title="More About me" image={jupiter} client:only>
+{All_Projects.map((project) => {
+    return (
+        <AstreSpatial project={project} client:load />
+        )
+})}
+
+<!-- <AstreSpatial id={1} x={500} y={-3000} title="More About me" image={jupiter} client:only>
     <BuushidoProject />
 </AstreSpatial>
 
@@ -50,4 +48,4 @@ At any point you can jump to a more accessible view of all the projects by click
 
 <AstreSpatial id={3} x={-2000} y={4000} title="Recommender System" image={NeonPlanet} client:only>
     <RecommendationSystem />
-</AstreSpatial>
+</AstreSpatial> -->
