@@ -34,20 +34,58 @@
     button {
         padding: 0.1em 0.4em;
         border-radius: 0.4em;
-        font-size: 0.5em;
-        font-family: "Poppins", sans-serif;
-        font-weight: 500;
-        color: map-get($map: $blue-planet, $key: text );
-
+        
         background: #070707;
-
+        
         margin: 1em 0;
-        @include button-spin-style()
+        @include button-spin-style() ;
+        
+        h3{
+            font-size: 0.6rem;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            color: map-get($map: $blue-planet, $key: text ) ;    
+        }
+
+        div {
+            position : absolute;
+            left: -10%;
+            top: -50%;
+            width: 120%;
+            height: 200px;
+            // border: solid limegreen;
+
+            h2 {
+                width: 80%;
+                margin: 0.5em auto;
+                font-family: monospace;
+                font-size: 0.5rem;
+                font-weight: 200;
+                color: #fff;
+              }
+              
+            h3 {
+                width: 80%;
+                margin: 0 auto;
+                font-family: monospace;
+                font-size: 0.5rem;
+                font-weight: 200;
+                color: #bcbcbc;  
+                margin-bottom: 1.3em;      
+            }
+        }
     }
     
     button:hover {
         box-shadow: 0 0 40px -8px $bright-purple;
-        color: $bright-green;
+
+        h3{
+            color: $bright-green;
+        }
+
+        .tilting-card {
+            opacity: 1;
+        }
     }
 }   
 

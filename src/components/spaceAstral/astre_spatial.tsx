@@ -4,6 +4,7 @@ import { useState, type FC, type ReactNode } from "react";
 
 import { ExploreButton } from "./navButton"
 import { CriptedTitle } from "./astre_title"
+import { TiltingInfos } from "../informationCards/titlting_infos";
 
 
 interface projectStruct {
@@ -28,7 +29,7 @@ export const AstreSpatial: FC<Props> = ({ project }) => {
     const renderDistance = 2000 // distance at which we render
     const detailsRenderDistance = 500
 
-    const {index, name, planetImage} = project
+    const {index, name, planetImage, image, shortDescription} = project
     
     const x = Positions.get()[index][0] 
     const y = Positions.get()[index][1] 
@@ -91,7 +92,12 @@ export const AstreSpatial: FC<Props> = ({ project }) => {
                 {renderDetails &&
                 <>
                 <CriptedTitle title={name}/>
-                <ExploreButton func={triggerInfoPage} />
+                <ExploreButton func={triggerInfoPage}>
+                    <TiltingInfos image={image}>
+                        <h2>{name}</h2>
+                        <h3>{shortDescription}</h3>
+                    </TiltingInfos>
+                </ExploreButton>
                 </>
                 }
             </div>

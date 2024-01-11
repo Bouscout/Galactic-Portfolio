@@ -1,12 +1,18 @@
 // button to trigger the project informations
 
-import type { FC } from "react"
+import type { FC, ReactNode } from "react"
 
 interface Props {
-    func : Function
+    func : Function,
+    children : ReactNode
 }
 
-export const ExploreButton :FC<Props> = ({func}) => {
-    return <button onClick={()=>{func(true)}} role="button"><h3>Explore</h3></button>
+export const ExploreButton :FC<Props> = ({func, children}) => {
+    return <button onClick={()=>{func(true)}} role="button">
+                <h3>Explore</h3>
+
+                <div>{children}</div>
+                
+            </button>
 }
 
