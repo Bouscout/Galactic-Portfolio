@@ -31,7 +31,7 @@ export const SideBar:FC<Props> = ({title, description, techStack, gitLinks, webL
 
             {children}
 
-            <h2>{title}</h2>
+            <h2 className="intro-text">{title}</h2>
             
             <div className="tech-stack">
             {techStack.map((tech, i) => {

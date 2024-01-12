@@ -26,8 +26,8 @@ type StateDict = {[key : string] : boolean | number}
 
 const windowState : StateDict = {
     "information" : false,
-    "exploration" : true,
-    "accessibility" : false,
+    "exploration" : false,
+    "accessibility" : true,
     "project" : -1,
 }
 export const GeneralState = atom(windowState)

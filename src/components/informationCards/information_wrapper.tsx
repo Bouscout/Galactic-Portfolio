@@ -19,7 +19,7 @@ export const InformationWrapper:FC = () => {
         )
     }, [useStore(GeneralState)["project"]])
 
-    // exit if no prokect render
+    // exit if no project to render
     if (active < 0){return}
 
     // land the ship

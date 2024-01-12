@@ -32,6 +32,8 @@
 
         // style for the sidebar section
         &:nth-child(1){
+            animation: slide-from-left 1s var(--slow-fast) 0s both;
+
             color: #fff;
             gap: 0.5em;
             justify-content: center;
@@ -102,6 +104,8 @@
             gap: 0.5em;
             background-color: $black;
             padding-block: 0.5em;
+
+            animation: slide-from-right 1s var(--slow-fast) 0s both;
 
             &::-webkit-scrollbar{
                 // display: none; width: 0px; visibility: hidden;
@@ -219,6 +223,28 @@
     }
 }
 
+@keyframes slide-from-left {
+    from {
+        // opacity: 0.2;
+        transform: translateX(-500px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slide-from-right {
+    from {
+        // opacity: 0.2;
+        transform: translateX(500px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
 // Media query for screens smaller than 600px
 @media screen and (max-width: 600px) {

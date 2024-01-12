@@ -8,10 +8,10 @@
     aspect-ratio : 1 ;
     border-radius: 50%;
     scale : 1 1.5;
+    // color: map-get($map: , $key: );
     // transition: all 1000ms;
     background : conic-gradient($iris, $accent-purple, $bright-green, $bright-blue, $bright-purple); 
-    // background : linear-gradient(0deg, $bright-green, $bright-purple); 
-    animation: turn 40s linear infinite alternate-reverse;
+    // animation: turn 40s linear infinite alternate-reverse;
 }
 
 #glass {

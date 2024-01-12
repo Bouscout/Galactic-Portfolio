@@ -8,18 +8,6 @@ import "./infos_page.scss"
 
 import { SideBar } from "./sideBar"
 import { ProjectDetails } from "./details"
-import { NavButtons } from "./navButtons"
-
-
-const shortDescription = `Welcome to Buushido, your ultimate destination for anime streaming. Immerse yourself in a thoughtfully curated collection, seamlessly blending timeless classics with the latest sensations. With user-friendly features enhancing every aspect, Buushido ensures you spend your time savoring only the finest anime experiences`
-const Title = "Buushido Anime Streaming"
-
-
-const link = "https://buushido.com"
-const githubLink = "https://github.com/Bouscout/Buushido_Frontend"
-
-
-const LongDescription = `Welcome to Buushido, your ultimate destination for anime streaming. Immerse yourself in a thoughtfully curated collection, seamlessly blending timeless classics with the latest sensations. With user-friendly features enhancing every aspect, Buushido ensures you spend your time savoring only the finest anime experiences`
 
 
 interface projectStruct {
