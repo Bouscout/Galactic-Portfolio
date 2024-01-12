@@ -6,7 +6,7 @@ export const first_time = atom(true) // first time user landing on the page
 export const velocityX = atom(0)
 export const velocityY = atom(0)
 
-export const flying = atom(true)
+export const flying = atom(false)
 
 // Project position in space
 const initPositions = {
@@ -26,8 +26,8 @@ type StateDict = {[key : string] : boolean | number}
 
 const windowState : StateDict = {
     "information" : false,
-    "exploration" : false,
-    "accessibility" : true,
+    "exploration" : true,
+    "accessibility" : false,
     "project" : -1,
 }
 export const GeneralState = atom(windowState)

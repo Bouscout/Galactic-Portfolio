@@ -43,8 +43,10 @@ export const InformationWrapper:FC = () => {
 
     const project = All_Projects[active]
 
+    const re_renderKey = Math.floor(Math.random() * 100)
+
     return (
-            <ProjectInfoPage project={project}>
+            <ProjectInfoPage key={re_renderKey} project={project}>
 
                 <NavButtons exit={exit} next={next} previous={previous} position={`${active + 1}/${All_Projects.length}`}/>
 

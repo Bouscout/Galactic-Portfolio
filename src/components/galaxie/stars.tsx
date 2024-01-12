@@ -57,8 +57,10 @@ export const AllStars :FC<Props> = ({numStars}) => {
             pencil.fillStyle = color;
             pencil.fill();
             
-            x  -= localVelocityX * radius
-            y -= localVelocityY * radius
+            if (flying.get()){
+                x  -= localVelocityX * radius
+                y -= localVelocityY * radius
+            }
             
             // handling out of bound
             x = x - radius > width ? -radius : x
@@ -92,16 +94,17 @@ export const AllStars :FC<Props> = ({numStars}) => {
     // animation
     function animate() :void{
         if (!pencil){return}
-        if (!flying.get()){
-            requestAnimationFrame(animate);
-            return
-        }
+        // if (!flying.get()){
+        //     requestAnimationFrame(animate);
+        //     return
+        // }
         
         pencil.fillStyle = '#010510';
         pencil.fillRect(0, 0, width, height);
         
         // drawing stars
         update(AllStars)
+        
         
         requestAnimationFrame(animate);
     }
@@ -129,8 +132,8 @@ export const AllStars :FC<Props> = ({numStars}) => {
             return sheetStars
         }
         const stars = createStarSheet(numStars)
-        update(stars)
         setAllStars(stars)
+        update(stars)
     }, [])
 
     

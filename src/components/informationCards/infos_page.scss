@@ -9,7 +9,18 @@
     display: grid;
     grid-template-columns: 30% 70%;
     overflow: hidden;
-    border: solid purple;
+
+    background-color: #030303;
+    
+    // background: hsl(224, 32%, 12%);
+    // background-image: conic-gradient(
+    // from 0deg at 50% 50%,
+    // blue,
+    // purple,
+    // purple,
+    // blue
+    // );
+    // background-blend-mode: multiply;
     
     &::after{
         content: "";

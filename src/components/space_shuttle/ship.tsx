@@ -35,9 +35,24 @@ export const Ship: FC = () => {
 
     // handle ship activation
     window.onclick = (e: MouseEvent) => {
-        // Use e.target as HTMLElement to access the matches method
-        flying.set(!flying.get());
+        const targetElement = e.target as HTMLElement;
+        if (targetElement.tagName.toLowerCase() === "canvas"){
+            console.log("clicked : ", targetElement)
+            flying.set(!flying.get());
+        }
+        
+        else if (targetElement.tagName.toLowerCase() === "h2"){
+            if (targetElement.className === "crypted-title"){
+                console.log("clicked div : ", targetElement.className)
+                flying.set(!flying.get());
+            }
+        }
+
+        else {
+            return
+        }
     };
+    // Use e.target as HTMLElement to access the matches method
    
 
       window.onmousemove = (e : MouseEvent) => {

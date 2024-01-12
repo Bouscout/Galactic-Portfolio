@@ -48,6 +48,7 @@
     // transition: all 1000ms;
 
     // 3d tilting component
+    position: relative;
     @include tilting-card-layout(
         3, 3
         ) ;
@@ -62,7 +63,7 @@
 
 
     // styling
-    width: 95%;
+    width: 100%;
     height: 100%;
     // aspect-ratio: 1.5;
 
@@ -70,9 +71,8 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 0.1em;
+    border-radius: 10px;
 
-    position: relative;
 
     display: flex;
     flex-direction: column;

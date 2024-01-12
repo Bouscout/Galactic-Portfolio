@@ -47,31 +47,35 @@
             color: map-get($map: $blue-planet, $key: text ) ;    
         }
 
-        div {
+        .tilting-wrapper {
             position : absolute;
-            left: -10%;
-            top: -50%;
-            width: 120%;
+            left: -40%;
+            top: -400%;
+            width: 300px;
             height: 200px;
             // border: solid limegreen;
 
-            h2 {
-                width: 80%;
-                margin: 0.5em auto;
-                font-family: monospace;
-                font-size: 0.5rem;
-                font-weight: 200;
-                color: #fff;
-              }
-              
-            h3 {
-                width: 80%;
-                margin: 0 auto;
-                font-family: monospace;
-                font-size: 0.5rem;
-                font-weight: 200;
-                color: #bcbcbc;  
-                margin-bottom: 1.3em;      
+            .tilting-card{
+
+                
+                h2 {
+                    width: 80%;
+                    margin: 0.5em auto;
+                    font-family: monospace;
+                    font-size: 0.5rem;
+                    font-weight: 200;
+                    color: #fff;
+                }
+                
+                h3 {
+                    width: 80%;
+                    margin: 0 auto;
+                    font-family: monospace;
+                    font-size: 0.25rem;
+                    font-weight: 200;
+                    color: #bcbcbc;  
+                    margin-bottom: 1.3em;      
+                }
             }
         }
     }

@@ -38,11 +38,7 @@ export const AstreSpatial: FC<Props> = ({ project }) => {
     const [posY, setPosY] = useState(y)
     const [landed, setLanded] = useState(false)
 
-    const setLanding = () => {
-        // const state = useStore(flying)
-        const state = flying.get()
-        setLanded(!landed)
-        flying.set(landed)
+    const setLanding = () => {    
         console.log("landed on ", name, posX, posY)
         setPosX(0)
         setPosY(0)
