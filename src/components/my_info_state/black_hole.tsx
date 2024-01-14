@@ -189,7 +189,7 @@ export const BlackHole:FC<Props> = ({ children = null }) => {
             </div>
 
             <WormHolesButton func={hyperSpeed} />
-            <HyperSpaceButton func={hyperSpeed} />
+            {/* <HyperSpaceButton func={hyperSpeed} /> */}
 
             {(!expanded && children) &&
             children

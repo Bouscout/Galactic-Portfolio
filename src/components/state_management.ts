@@ -25,8 +25,8 @@ export const Positions = atom<{[key : number] : number[]}>(initPositions)
 type StateDict = {[key : string] : boolean | number}
 
 const windowState : StateDict = {
-    "information" : false,
-    "exploration" : true,
+    "information" : true,
+    "exploration" : false,
     "accessibility" : false,
     "project" : -1,
 }

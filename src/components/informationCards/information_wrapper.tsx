@@ -43,6 +43,8 @@ export const InformationWrapper:FC = () => {
 
     const project = All_Projects[active]
 
+    console.log("selected is : ", project)
+
     const re_renderKey = Math.floor(Math.random() * 100)
 
     return (

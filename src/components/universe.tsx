@@ -20,7 +20,6 @@ export const Universe:FC<Props> = ({mode, children}) => {
 
     }, [useStore(GeneralState)[mode]])
 
-    console.log(mode, " : render is ", render)
     return (
         <>
         {render &&

@@ -94,10 +94,6 @@ export const AllStars :FC<Props> = ({numStars}) => {
     // animation
     function animate() :void{
         if (!pencil){return}
-        // if (!flying.get()){
-        //     requestAnimationFrame(animate);
-        //     return
-        // }
         
         pencil.fillStyle = '#010510';
         pencil.fillRect(0, 0, width, height);

@@ -82,19 +82,19 @@ export const WormWindow:FC<windowProps> = ({project, scroll, position, select, t
         console.log("setting : ", !expanded)
     }
 
-    const triggerInfo = () => {
-        useGeneralState(null, project.index)        
-       
+    const triggerInfo = (evt : React.MouseEvent<HTMLButtonElement> ) => {
+        useGeneralState(null, project.index)
+        evt.stopPropagation()          
     }
 
 
     return (
         <>
-        <article style={inStyle}>
+        <article style={inStyle} onClick={()=>expanding()}>
         
         {(!expanded && select === -1) &&
         
-        <div onClick={()=>expanding()}>
+        <div>
         <TiltingInfos image={image}>
             
             <h2>{name}</h2>
@@ -109,7 +109,7 @@ export const WormWindow:FC<windowProps> = ({project, scroll, position, select, t
                 <h2>{name}</h2>
                 <h4>{shortDescription}</h4>
 
-                <button onClick={()=>triggerInfo()}>Explore</button>
+                <button onClick={(evt)=>triggerInfo(evt)}>Explore</button>
             </div>
         </div>
 

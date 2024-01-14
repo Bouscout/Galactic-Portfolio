@@ -66,7 +66,7 @@ export const WormHolesButton:FC<Props> = ({func}) => {
     if (!first_time.get()){return}
 
     const Position = {
-        left : "5%",
+        left : "50%",
         bottom : "5%",
     } as React.CSSProperties
 
@@ -80,7 +80,8 @@ export const WormHolesButton:FC<Props> = ({func}) => {
     return (
         <div className="intro-button" style={Position}>
             <button onClick={() => activ_func()}>
-                <h3>Worm-Holes</h3>
+                {/* <h3>Worm-Holes</h3> */}
+                <h3>Hyper-Space</h3>
             </button>
         </div>
     )
