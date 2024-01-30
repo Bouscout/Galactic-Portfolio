@@ -26,7 +26,7 @@ interface windowProps {
     trigger : Function,
 }
 
-export const WormWindow:FC<windowProps> = ({project, scroll, position, select, trigger, index }) => {
+const WormWindow:FC<windowProps> = ({project, scroll, position, select, trigger, index }) => {
     const [expanded, setExpanded] = useState(false)
 
     const {name, image, shortDescription} = project
@@ -90,7 +90,7 @@ export const WormWindow:FC<windowProps> = ({project, scroll, position, select, t
 
     return (
         <>
-        <article style={inStyle} onClick={()=>expanding()}>
+        <article style={inStyle as React.CSSProperties} onClick={()=>expanding()}>
         
         {(!expanded && select === -1) &&
         
@@ -121,3 +121,5 @@ export const WormWindow:FC<windowProps> = ({project, scroll, position, select, t
         </>
     )
 }
+
+export default WormWindow

@@ -5,7 +5,7 @@
     "jsxImportSource": "react",
     "strict": true,
     "target": "ES6",
-    "lib": ["DOM"],
+    // "lib": ["DOM"],
 
     "plugins": [
       {
@@ -25,6 +25,4 @@
 
     "excludeDirectories": ["**/node_modules", "_build", "dist"],
   }
-
-  
 }

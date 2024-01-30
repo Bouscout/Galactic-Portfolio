@@ -1,9 +1,8 @@
 // worm hole component to jump to the planets project without needind to explore from space
 
-import { useState, type FC, useEffect, useRef } from "react";
-import { CriptedTitle } from "../spaceAstral/astre_title"
+import { useState, type FC,  useRef } from "react";
 
-import { WormWindow } from "./worm_window"
+import WormWindow  from "./worm_window"
 import { All_Projects } from "../all_projects";
 
 
@@ -21,7 +20,7 @@ interface projectStruct {
     webLink? : string,
 }
 
-export const WormHolePage :FC = () => {
+const WormHolePage :FC = () => {
     const Projects : projectStruct[] = All_Projects
 
     const [scrollPercent, setScrollPercent] = useState(0)
@@ -132,48 +131,6 @@ const HeadMessage:FC = () => {
 }
 
 
-import Akira from "../../../assets/panoramas/akira2.webp"
-const SpecialCard = () => {
-    const [expand, setExpand] = useState(false)
-
-    const regular:React.CSSProperties = {
-        transition : 'all 1000ms',
-        backgroundImage : `url("${Akira.src}")`,
-        position : 'absolute',
-        left : '50%',
-        translate : "-50% -50%",
-        zIndex : '5',
-        border : 'solid lime',
-        backgroundPosition : 'center'
-    }
-
-    let styling : React.CSSProperties = {
-        ...regular ,
-        width : '20%',
-        height : "60%",
-        top : "60%",
-        // aspectRatio : "0.7",
-        backgroundSize : 'cover'
-        // backgroundSize : "100vw auto",
-    }
-    
-    if (expand){
-        styling  = {
-            ...regular,
-            top : '50%',
-            width : '100%',
-            height : '100%',
-            backgroundSize : 'cover'
-        }
-    }
-
-    return (
-        <article style={styling} onClick={()=>setExpand(!expand)}>
-
-        </article>
-    )
-}
-
 interface buttonProps {
     func : Function
 } 
@@ -188,3 +145,20 @@ export const ExitButton :FC<buttonProps> = () => {
         </button>
     )
 }
+
+export default WormHolePage
+
+// Astro detected an unhandled rejection. Here's the stack trace:
+// TypeError: Cannot read properties of null (reading 'useState')
+//     at Module.useState (C:\Users\boudi\galactic_portfolio\node_modules\react\cjs\react.development.js:1622:21)
+//     at WormHolePage (C:/Users/boudi/galactic_portfolio/src/components/worm_hole_v2/worm_hole_page.tsx:15:67)
+//     at Tester (C:/Users/boudi/galactic_portfolio/node_modules/@astrojs/react/server.js:41:18)
+//     at describeNativeComponentFrame (C:\Users\boudi\galactic_portfolio\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:3732:7)
+//     at describeFunctionComponentFrame (C:\Users\boudi\galactic_portfolio\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:3827:12)
+//     at getStackByComponentStackNode (C:\Users\boudi\galactic_portfolio\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5294:19)
+//     at getCurrentStackInDEV (C:\Users\boudi\galactic_portfolio\node_modules\react-dom\cjs\react-dom-server-legacy.node.development.js:5460:12)
+//     at ReactDebugCurrentFrame.getStackAddendum (C:\Users\boudi\galactic_portfolio\node_modules\react\cjs\react.development.js:130:16)
+//     at printWarning (C:\Users\boudi\galactic_portfolio\node_modules\react\cjs\react-jsx-dev-runtime.development.js:71:40)
+//     at error (C:\Users\boudi\galactic_portfolio\node_modules\react\cjs\react-jsx-dev-runtime.development.js:61:7)
+// See Docs Reference
+// Make sure your promises all have an await or a .catch() handler.
