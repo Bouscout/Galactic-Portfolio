@@ -15,8 +15,7 @@ interface Props {
 }
 
 export const TiltingInfos :FC<Props> = ({image, children}) => {
-    const columns = 3
-    const rows = 3
+    const MousePoint = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
     image = image ? image : BlueNebula
 
@@ -32,7 +31,7 @@ export const TiltingInfos :FC<Props> = ({image, children}) => {
                 {children}
 
                 <div id="mouse-tracker">
-                    {Array(columns * rows).fill(0).map((x, i) => {
+                    {MousePoint.map((i) => {
                         return <div key={i}/>
                     })}
                 </div>

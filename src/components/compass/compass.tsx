@@ -4,7 +4,6 @@ import "./compass.scss"
 import { useState, type FC } from "react";
 
 import { Positions } from "../state_management";
-import { useStore } from "@nanostores/react";
 
 export const Compass:FC = () => {
     const range = 5000

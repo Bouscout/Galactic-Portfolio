@@ -1,5 +1,5 @@
 {
-  "name": "galactic-portfolio",
+  "name": "init_file",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,20 +7,29 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+  
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build" 
+   
   },
   "dependencies": {
-    "@astrojs/check": "^0.3.3",
-    "@astrojs/react": "^3.0.7",
+    "@astrojs/check": "^0.4.1",
+    "@astrojs/react": "^3.0.9",
+    "@nanostores/preact": "^0.5.0",
     "@nanostores/react": "^0.7.1",
-    "@types/node": "20.10.5",
-    "@types/react": "^18.2.45",
+    "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "astro": "^4.0.6",
+    "astro": "^4.2.7",
     "nanostores": "^0.9.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.69.5",
     "typescript": "^5.3.3"
-  }
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "sass": "^1.70.0"
+  },
+
+  "homepage": "https://Bouscout.github.io/Galactic-Portfolio"
 }

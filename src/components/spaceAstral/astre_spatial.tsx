@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { velocityX, velocityY, flying, Positions, useGeneralState } from "../state_management";
-import { useState, type FC, type ReactNode } from "react";
+import { useState, type FC } from "react";
 
 import { ExploreButton } from "./navButton"
 import { CriptedTitle } from "./astre_title"
@@ -36,7 +36,6 @@ export const AstreSpatial: FC<Props> = ({ project }) => {
 
     const [posX, setPosX] = useState(x)
     const [posY, setPosY] = useState(y)
-    const [landed, setLanded] = useState(false)
 
     const setLanding = () => {    
         console.log("landed on ", name, posX, posY)

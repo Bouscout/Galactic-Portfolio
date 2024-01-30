@@ -36,7 +36,7 @@ export const CriptedTitle : FC<Props> = ({title, header=false, duration=1500}) =
         let currentIndex = 0;
         const intervalId = setInterval(() => {
           let randomText = getRandomText();
-          setText((prevText) => {
+          setText(() => {
             // Keep characters that are already revealed
             const revealedText = title.slice(0, currentIndex);
             currentIndex += 1;

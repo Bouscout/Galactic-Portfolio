@@ -3,7 +3,7 @@
 
 // display the message in an animation where the text is written slowly
 
-import { useState, type FC, useEffect, type ReactNode } from "react";
+import { useState, type FC, useEffect } from "react";
 
 import "./message_window.scss"
 
@@ -12,10 +12,9 @@ interface Props {
     duration? : number, // ms
     delay ? : number, // ms
     speed ? : number,
-    children? : ReactNode
 }
 
-export const MessageWindow:FC<Props> = ({msg, duration=null, delay=0, speed=5, children=null}) => {
+export const MessageWindow:FC<Props> = ({msg, duration=null, delay=0, speed=5}) => {
     const writtingDelay = (msg.length / speed)
     const [index, setIndex] = useState(1)
     const [text, setText] = useState('')
@@ -78,11 +77,6 @@ interface buttonProps {
 } 
 
 
-const OkButton:FC<buttonProps> = ({func}) => {
-    return (
-        <button onClick={()=>func(false)} role="button"><h3>Continue</h3></button>
-    )
-}
 
 export const ExitButton :FC<buttonProps> = ({ func }) => {
     return (

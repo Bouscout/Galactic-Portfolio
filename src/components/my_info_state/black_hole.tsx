@@ -3,7 +3,7 @@
 import "./my_infos.scss"
 import { useState, useEffect, useRef , type FC, type ReactNode } from "react";
 
-import { HyperSpaceButton, WormHolesButton } from "./mainButtons";
+import {  WormHolesButton } from "./mainButtons";
 
 interface Props {
     children? : ReactNode
@@ -15,6 +15,8 @@ export const BlackHole:FC<Props> = ({ children = null }) => {
     const [fillColor, setFillColor] = useState("#000")
     const [expanded, setExpanded] = useState(false)
     const speedOffset = 256
+
+    const followMouse : boolean = false
 
     const numStars = 512
 
@@ -105,7 +107,8 @@ export const BlackHole:FC<Props> = ({ children = null }) => {
             AllStars[i][3] = Math.random() * width*2 - centerX*2;
             AllStars[i][4] = Math.random() * height*2 - centerY*2;
         }
-        }
+        setAllStars(AllStars.slice())
+    }
 
     function animate(){
         if (!pencil){return}
@@ -118,7 +121,7 @@ export const BlackHole:FC<Props> = ({ children = null }) => {
             let draw=true;
 
             // update the star with the mouse position
-            if (false){
+            if (followMouse){
                 AllStars[i][0]-=localVelocityX ;
                 AllStars[i][1]-=localVelocityY ;
             }

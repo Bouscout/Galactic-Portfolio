@@ -2,7 +2,7 @@
 
 import type { FC } from "react";
 
-import { GeneralState, useGeneralState } from "../state_management";
+import { useGeneralState } from "../state_management";
 
 import "./navbar.scss"
 
