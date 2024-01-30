@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime.9YwcPWTT.js";import{r as s}from"./index.LFf77hJu.js";import{G as t}from"./state_management.IfemeKTu.js";import{u as i}from"./index.0CZuico2.js";const S=({mode:e,children:n})=>{const o=t.get()[e],[a,m]=s.useState(o);return s.useEffect(()=>{const c=t.get()[e];m(c)},[i(t)[e]]),r.jsx(r.Fragment,{children:a&&n})};export{S as Universe};
