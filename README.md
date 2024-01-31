@@ -1,6 +1,7 @@
 # Galatic Portfolio Website
 
 Portfolio website in a universe exploration style 💫
+take a look : https://bouscout.github.io/Galactic-Portfolio/
 
 ## Requirements
 ```text
